@@ -12,7 +12,7 @@
   --secondary-color: #E0A41F;
   --font-main: "Bebas Neue", sans-serif;
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
+  --background: #2f2f2f;
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
@@ -201,4 +201,14 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+@keyframes marquee-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-right {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
 }

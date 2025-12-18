@@ -29,7 +29,7 @@ export default function Header() {
           {/* LINHA DE CIMA: LOGO + CONTATOS (DESKTOP) / LOGO + HAMBURGUER (MOBILE) */}
           <div className="flex items-center justify-between py-0">
             {/* LOGO */}
-            <Link href="/" className="flex items-center">
+            <Link href="/" className="flex items-center mt-4">
               <Image
                 src="/imgs/logo.png"
                 alt="Logo"

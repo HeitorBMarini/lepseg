@@ -1,16 +1,20 @@
 import { Phone, Mail } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 
 export const contactInfo = {
   phoneGroup: {
     title: "Telefones",
     items: [
       {
-        label: "(19) 9 99940028",
+        label: "(19) 9 9994-0028",
         href: "tel:+551999940028",
-        icon: Phone, 
+        icon: Phone,
       },
-     
-
+      {
+        label: "WhatsApp",
+        href: "https://wa.me/551999940028",
+        icon: FaWhatsapp,
+      },
     ],
   },
 
