@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { AnimatedNumber } from "./AnimatedNumber";
+import { AnimatedNumber } from "../AnimatedNumber";
 
 const stats = [
   {
@@ -30,21 +30,17 @@ const stats = [
   },
 ];
 
-export default function StatsBigNumbers() {
+export default function NumbersLepseg() {
   return (
     <section
       className="
-        relative z-20
-        -mt-12 md:-mt-20
-        mb-10
+        mt-10
       "
     >
       <div className="mx-auto max-w-5xl px-4">
         <div
           className="
-            bg-(--secondary-color)
-            rounded-3xl
-            shadow-[0_8px_25px_rgba(0,0,0,0.35)]
+          
             flex flex-col md:flex-row
             divide-y md:divide-y-0 md:divide-x divide-white/20
             py-6 md:py-8

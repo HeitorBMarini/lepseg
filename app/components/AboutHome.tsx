@@ -55,7 +55,7 @@ export default function AboutHome() {
         {/* ================== BLOCO DIREITO – TEXTO + ÍCONES ================== */}
         <div className="w-full md:w-1/2 space-y-6">
           {/* labelzinho “Sobre nós” */}
-          <div className="flex items-center gap-2 text-md uppercase tracking-[0.18em] text-white/70">
+          <div className="flex items-center gap-2 text-md  tracking-[0.18em] text-white/70">
             {/* Ícone estilo engrenagem */}
             <Settings
               size={18}
@@ -64,7 +64,7 @@ export default function AboutHome() {
             />
 
             {/* Texto */}
-            <span>Sobre Nós</span>
+            <span className="font-bold">Sobre Nós</span>
           </div>
 
           {/* Título principal */}
@@ -140,7 +140,7 @@ export default function AboutHome() {
           <Link
             href="/a-lepseg"
             className="
-    mt-6 inline-flex items-center justify-center
+    mt-2 inline-flex items-center justify-center
     px-6 py-2.5
     rounded-full
     border border-(--primary-color)

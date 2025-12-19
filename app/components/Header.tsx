@@ -70,7 +70,6 @@ export default function Header() {
               </a>
             </div>
 
-            {/* BOTÃO HAMBÚRGUER (MOBILE) */}
             <button
               type="button"
               className="md:hidden inline-flex items-center justify-center rounded-full border border-white/40 p-2"
@@ -81,15 +80,13 @@ export default function Header() {
             </button>
           </div>
 
-          {/* LINHA + MENU DESKTOP (MANTIDO COMO ESTAVA) */}
           <div className="hidden md:block">
-            {/* LINHA BRANCA ACIMA DO MENU (LARGURA LIMITADA + ALINHADA À DIREITA) */}
             <div className="flex justify-end">
-              <div className="w-full max-w-125 border-t-2 border-white/70 relative bottom-6.5" />
+              <div className="w-full max-w-135 border-t-2 border-white/70 relative bottom-6.5" />
             </div>
 
             {/* MENU ALINHADO À DIREITA */}
-            <nav className="flex justify-end gap-6 text-xs lg:text-sm font-semibold tracking-wide">
+            <nav className="flex justify-end itmes-center gap-6 text-xs lg:text-sm font-semibold tracking-wide">
               {navLinks.map((item, index) => {
                 const isHome = index === 0; // HOME destacado
 
@@ -101,7 +98,7 @@ export default function Header() {
                       className="
                         inline-flex items-center justify-center
                         px-5 py-1.5
-                        bg-[#ffc400]
+                        bg-(--primary-color)
                         text-black
                         rounded-full
                         shadow-md
@@ -120,7 +117,7 @@ export default function Header() {
                     href={item.href}
                     className="
                       uppercase
-                      hover:text-[#ffc400]
+                      hover:bg-(--primary-color) hover:text-black p-1.5 rounded-full
                       transition-colors
                     "
                   >

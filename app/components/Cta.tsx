@@ -77,19 +77,19 @@ export default function CTASection() {
               <Image
                 src={item.icon}
                 alt={item.title}
-                width={42}
-                height={42}
+                width={50}
+                height={50}
                 className="mx-auto mb-4"
               />
 
-              <h3 className="text-sm font-semibold mb-2">{item.title}</h3>
-              <p className="text-xs text-white/80">{item.desc}</p>
+              <h3 className="text-md font-semibold mb-2">{item.title}</h3>
+              <p className="text-xl text-white/80">{item.desc}</p>
             </article>
           ))}
         </div>
 
         {/* RODAPÉ */}
-        <div className="mt-14 border-t border-white/30 pt-6 text-xs text-white/80">
+        <div className="mt-14 border-t border-white/70 pt-6 text-sm text-white/80">
           <p>
             Horário de atendimento: Segunda a Sexta, 8h às 18h | Sábado, 8h às
             12h

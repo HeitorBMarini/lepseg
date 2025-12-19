@@ -69,7 +69,7 @@ function ArrowAfter({ type }: { type?: "down" | "up" }) {
 
 export default function ProcessoSection() {
   return (
-    <section className="bg-[#282828] text-white py-10">
+    <section className=" text-white py-10">
       <div className="max-w-6xl mx-auto px-6">
         {/* TOPO */}
         <div className="flex flex-col items-center text-center">
