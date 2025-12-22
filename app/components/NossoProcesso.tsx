@@ -69,7 +69,7 @@ function ArrowAfter({ type }: { type?: "down" | "up" }) {
 
 export default function ProcessoSection() {
   return (
-    <section className=" text-white py-10">
+    <section className=" text-white md:py-10 py-0">
       <div className="max-w-6xl mx-auto px-6">
         {/* TOPO */}
         <div className="flex flex-col items-center text-center">
@@ -116,7 +116,7 @@ export default function ProcessoSection() {
           </div>
 
           {/* LINHA 2 — 05 e 06 CENTRALIZADOS */}
-          <div className="grid gap-y-10 gap-x-10 sm:grid-cols-2 lg:grid-cols-2 justify-center lg:max-w-4xl mx-auto md:px-45">
+          <div className="grid gap-y-10 gap-x-10 sm:grid-cols-2 lg:grid-cols-2 md:justify-center lg:max-w-4xl mx-auto md:px-45 md:py-0 py-5">
             {STEPS.slice(4).map((s) => (
               <article key={s.n} className="relative">
                 {/* seta do 05 (se tiver) */}

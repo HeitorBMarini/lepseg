@@ -219,7 +219,7 @@ export default function ContatoPage() {
               {/* ✅ Card amarelo */}
               <aside
                 className="rounded-2xl mt-10 p-7 md:p-8 text-[#1b1b1b] shadow-xl"
-                style={{ backgroundColor: "var(--primary-color)" }} // ✅ funciona sempre
+                style={{ backgroundColor: "var(--primary-color)" }} 
               >
                 <h2 className="text-2xl font-extrabold">
                   Informações de Contato
@@ -289,7 +289,7 @@ export default function ContatoPage() {
                         target="_blank"
                         rel="nofollow noreferrer"
                         aria-label={social.name}
-                        className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#1f1f1f]/30 bg-white/20 hover:bg-white/30 transition"
+                        className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#1f1f1f]/30 hover:bg-white/30 transition"
                       >
                         <Icon className="h-4.5 w-4.5" />
                       </a>

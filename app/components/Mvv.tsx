@@ -61,7 +61,7 @@ export default function MVVSection() {
       {/* overlay escuro pra garantir contraste (opcional, mas recomendado) */}
       <div className="absolute inset-0 -z-10" />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6 pt-16 pb-8">
+      <div className="relative z-10 max-w-6xl mx-auto px-6 md:pt-16 pt-39 pb-8">
         {/* topo (como no print) */}
         <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.28em] text-white/70">
           <Settings className="text-(--primary-color)" size={16} />
@@ -96,7 +96,7 @@ export default function MVVSection() {
                     onClick={() => setActive(t.key)}
                     className={`
                       flex items-center justify-center gap-3
-                      py-5 text-sm font-semibold
+                      py-5 text-sm font-semibold md:p-0 p-6
                       transition
                       ${
                         isActive
@@ -115,11 +115,11 @@ export default function MVVSection() {
     ${
       t.key === "missao"
         ? isActive
-          ? "brightness-0 invert-0" 
-          : "invert opacity-80" 
+          ? "brightness-0 invert-0"
+          : "invert opacity-80"
         : isActive
-        ? "brightness-0" 
-        : "opacity-80" 
+        ? "brightness-0"
+        : "opacity-80"
     }
   `}
                     />
