@@ -87,7 +87,7 @@ export default function EscolherNew() {
       <div className="relative max-w-6xl mx-auto px-6">
         {/* topo */}
         <div className="flex flex-col items-center text-center">
-          <span className="inline-flex items-center justify-center rounded-4xl bg-[#FDB41433] px-4 py-2 text-[10px] e tracking-[0.24em] text-(--primary-color)">
+          <span className="inline-flex items-center justify-center rounded-md bg-[#FFFFFF0D] px-4 py-2 text-[12px] e tracking-[0.24em] text-(--primary-color)">
             Conheça Aqui
           </span>
 

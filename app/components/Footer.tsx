@@ -5,16 +5,15 @@ import Link from "next/link";
 import { MapPin, Phone, Mail, ChevronUp } from "lucide-react";
 import { contactInfo } from "@/app/data/contactInfo";
 import { socialLinks } from "../data/socialLinks";
-// opcional (se você tiver):
-// import { socialLinks } from "@/app/data/socialLinks";
+
 
 const navLinks = [
   { label: "Home", href: "/" },
-  { label: "Quem Somos", href: "/a-lepseg" }, // ajuste se sua rota for outra
+  { label: "Quem Somos", href: "/a-lepseg" }, 
   { label: "Treinamentos", href: "/treinamentos" },
   { label: "Galeria", href: "/galeria" },
   { label: "Contato", href: "/contato" },
-  { label: "Mapa do Site", href: "/mapa-do-site" }, // ajuste se existir
+  { label: "Mapa do Site", href: "/mapa-do-site" }, 
 ];
 
 export default function Footer() {

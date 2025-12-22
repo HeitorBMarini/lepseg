@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Phone, Mail } from "lucide-react";
+import { Phone } from "lucide-react";
 import { contactInfo } from "../data/contactInfo";
 import { FaWhatsapp } from "react-icons/fa";
 

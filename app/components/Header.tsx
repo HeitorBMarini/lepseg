@@ -4,6 +4,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { contactInfo } from "@/app/data/contactInfo";
 
@@ -17,18 +18,22 @@ const navLinks = [
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
 
   const phone = contactInfo.phoneGroup.items[0];
   const email = contactInfo.email;
 
+
+  const isActive = (href: string) => {
+    if (href === "/") return pathname === "/";
+    return pathname === href || pathname.startsWith(href + "/");
+  };
+
   return (
     <>
-      {/* HEADER ABSOLUTO SOBRE O BANNER */}
       <header className="absolute top-0 left-0 w-full z-30 text-white">
         <div className="max-w-6xl mx-auto px-4">
-          {/* LINHA DE CIMA: LOGO + CONTATOS (DESKTOP) / LOGO + HAMBURGUER (MOBILE) */}
           <div className="flex items-center justify-between py-0">
-            {/* LOGO */}
             <Link href="/" className="flex items-center mt-4">
               <Image
                 src="/imgs/logo.png"
@@ -39,16 +44,14 @@ export default function Header() {
               />
             </Link>
 
-            {/* CONTATOS DESKTOP */}
             <div className="hidden md:flex items-center gap-4 text-xs lg:text-sm">
-              {/* TELEFONE */}
               {phone && (
                 <a
                   href={phone.href}
-                  className="flex items-center gap-2 hover:text-[#ffc400] transition-colors"
+                  className="flex items-center gap-2 hover:text-(--primary-color) transition-colors"
                 >
                   {(() => {
-                    const Icon = phone.icon;
+                    const Icon = phone.icon as any;
                     return <Icon size={16} />;
                   })()}
                   <span>{phone.label}</span>
@@ -57,13 +60,12 @@ export default function Header() {
 
               <span className="h-4 w-px bg-white/40" />
 
-              {/* EMAIL */}
               <a
                 href={email.href}
-                className="flex items-center gap-2 hover:text-[#ffc400] transition-colors"
+                className="flex items-center gap-2 hover:text-(--primary-color) transition-colors"
               >
                 {(() => {
-                  const Icon = email.icon;
+                  const Icon = email.icon as any;
                   return <Icon size={16} />;
                 })()}
                 <span>{email.label}</span>
@@ -85,41 +87,33 @@ export default function Header() {
               <div className="w-full max-w-135 border-t-2 border-white/70 relative bottom-6.5" />
             </div>
 
-            {/* MENU ALINHADO À DIREITA */}
-            <nav className="flex justify-end itmes-center gap-6 text-xs lg:text-sm font-semibold tracking-wide">
-              {navLinks.map((item, index) => {
-                const isHome = index === 0; // HOME destacado
-
-                if (isHome) {
-                  return (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      className="
-                        inline-flex items-center justify-center
-                        px-5 py-1.5
-                        bg-(--primary-color)
-                        text-black
-                        rounded-full
-                        shadow-md
-                        hover:brightness-105
-                        transition
-                      "
-                    >
-                      {item.label}
-                    </Link>
-                  );
-                }
+            <nav className="flex justify-end items-center gap-6 text-xs lg:text-sm font-semibold tracking-wide">
+              {navLinks.map((item) => {
+                const active = isActive(item.href);
 
                 return (
                   <Link
                     key={item.href}
                     href={item.href}
-                    className="
-                      uppercase
-                      hover:bg-(--primary-color) hover:text-black p-1.5 rounded-full
-                      transition-colors
-                    "
+                    className={
+                      active
+                        ? `
+                          inline-flex items-center justify-center
+                          px-5 py-1.5
+                          bg-(--primary-color)
+                          text-black
+                          rounded-full
+                          shadow-md
+                          hover:brightness-105
+                          transition
+                        `
+                        : `
+                          uppercase
+                          hover:bg-(--primary-color) hover:text-black
+                          p-1.5 rounded-full
+                          transition-colors
+                        `
+                    }
                   >
                     {item.label}
                   </Link>
@@ -130,18 +124,17 @@ export default function Header() {
         </div>
       </header>
 
-      {/* MENU MOBILE FULLSCREEN (APENAS MOBILE) */}
+      {/* MENU MOBILE */}
       <div
         className={`
-    fixed inset-x-0 top-0 z-40 
-    bg-[#282828] text-white
-    px-6 pt-6 pb-12
-    rounded-b-3xl shadow-lg
-    transform transition-transform duration-300
-    ${mobileOpen ? "translate-y-0" : "-translate-y-full"}
-  `}
+          fixed inset-x-0 top-0 z-40
+          bg-[#282828] text-white
+          px-6 pt-6 pb-12
+          rounded-b-3xl shadow-lg
+          transform transition-transform duration-300
+          ${mobileOpen ? "translate-y-0" : "-translate-y-full"}
+        `}
       >
-        {/* TOPO: LOGO + X */}
         <div className="flex items-center justify-between mb-10 max-w-6xl mx-auto">
           <Image
             src="/imgs/logo.png"
@@ -153,27 +146,22 @@ export default function Header() {
 
           <button
             type="button"
-            className="
-        w-10 h-10 rounded-full border border-white/60
-        flex items-center justify-center text-2xl
-      "
+            className="w-10 h-10 rounded-full border border-white/60 flex items-center justify-center text-2xl"
             onClick={() => setMobileOpen(false)}
           >
             ×
           </button>
         </div>
 
-        {/* CONTEÚDO DO MENU */}
         <div className="max-w-6xl mx-auto px-2 space-y-8">
-          {/* CONTATOS MOBILE (se quiser manter) */}
           <div className="space-y-3 text-sm text-center">
             {phone && (
               <a
                 href={phone.href}
-                className="inline-flex items-center gap-2 hover:text-[#ffc400] transition-colors"
+                className="inline-flex items-center gap-2 hover:text-(--primary-color) transition-colors"
               >
                 {(() => {
-                  const Icon = phone.icon;
+                  const Icon = phone.icon as any;
                   return <Icon size={18} />;
                 })()}
                 <span>{phone.label}</span>
@@ -183,10 +171,10 @@ export default function Header() {
             <div>
               <a
                 href={email.href}
-                className="inline-flex items-center gap-2 hover:text-[#ffc400] transition-colors mt-1"
+                className="inline-flex items-center gap-2 hover:text-(--primary-color) transition-colors mt-1"
               >
                 {(() => {
-                  const Icon = email.icon;
+                  const Icon = email.icon as any;
                   return <Icon size={18} />;
                 })()}
                 <span>{email.label}</span>
@@ -194,10 +182,9 @@ export default function Header() {
             </div>
           </div>
 
-          {/* LINKS DO MENU MOBILE (CENTRALIZADOS) */}
           <nav className="flex flex-col items-center gap-6 text-lg w-full">
-            {navLinks.map((item, index) => {
-              const isHome = index === 0;
+            {navLinks.map((item) => {
+              const active = isActive(item.href);
 
               return (
                 <Link
@@ -205,11 +192,10 @@ export default function Header() {
                   href={item.href}
                   onClick={() => setMobileOpen(false)}
                   className={`
-              uppercase
-              ${isHome ? "text-[#ffc400]" : "text-white"}
-              hover:text-[#ffc400]
-              transition-colors
-            `}
+                    uppercase transition-colors
+                    ${active ? "text-(--primary-color)" : "text-white"}
+                    hover:text-(--primary-color)
+                  `}
                 >
                   {item.label}
                 </Link>
