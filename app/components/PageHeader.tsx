@@ -91,7 +91,7 @@ export default function PageHeader({ title, breadcrumbs, subtitle }: PageHeaderP
         </div>
 
         {/* título (grande e branco como no print) */}
-        <h1 className="mt-4 text-3xl md:text-5xl font-bold tracking-wide text-white">
+        <h1 className="mt-4 text-3xl md:text-5xl uppercase font-medium tracking-wide text-white">
           {title}
         </h1>
 

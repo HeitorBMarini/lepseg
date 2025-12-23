@@ -91,7 +91,7 @@ export default function AboutHome() {
                 alt="Ícone de inovação"
                 width={75}
                 height={75}
-                className="object-contain"
+                className="object-contain "
               />
               <div className="space-y-0.5">
                 <p className="text-md font-semibold">Inovação</p>

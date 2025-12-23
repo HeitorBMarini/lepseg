@@ -91,7 +91,7 @@ export default function ContatoPage() {
                 FALE CONOSCO
               </span>
 
-              <h2 className="mt-0 text-3xl md:text-5xl text-white font-extrabold leading-tight">
+              <h2 className="mt-3 text-3xl md:text-4xl text-white font-bold leading-tight">
                 Solicite seu <br />
                 <span className="text-(--primary-color)">
                   Orçamento Gratuito
@@ -100,7 +100,7 @@ export default function ContatoPage() {
 
               <p className="mt-4 text-sm md:text-base text-white/70">
                 Preencha o formulário abaixo ou entre em contato direto pelos
-                nossos canais. Responderemos em até 2 horas com uma proposta
+                nossos canais. <br /> Responderemos em até 2 horas com uma proposta
                 personalizada.
               </p>
             </div>
@@ -168,7 +168,7 @@ export default function ContatoPage() {
                     />
                   </Field>
 
-                  <div className="flex items-center justify-between gap-3">
+                  <div className="flex items-end justify-end gap-3">
                     <p className="text-xs text-[#7a7a7a]">
                       Os campos com * são obrigatórios
                     </p>
@@ -189,11 +189,10 @@ export default function ContatoPage() {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="mt-2 w-full rounded-full bg-[#1f1f1f] px-6 py-3 text-sm font-bold tracking-wider text-(--primary-color) hover:opacity-90 disabled:opacity-60"
+                    className="mt-2 w-full rounded-full bg-[#1f1f1f] px-6 py-2 text-sm font-bold tracking-wider text-(--primary-color) hover:opacity-90 disabled:opacity-60"
                   >
                     <span className="inline-flex items-center justify-center gap-2">
                       {loading ? "ENVIANDO..." : "ENVIAR MENSAGEM"}
-                      <Send size={18} />
                     </span>
                   </button>
                 </form>
@@ -216,19 +215,19 @@ export default function ContatoPage() {
                 `}</style>
               </div>
 
-              {/* ✅ Card amarelo */}
+
               <aside
-                className="rounded-2xl mt-10 p-7 md:p-8 text-[#1b1b1b] shadow-xl"
+                className="rounded-2xl mt-8 p-7 md:p-8 text-[#1b1b1b] shadow-xl"
                 style={{ backgroundColor: "var(--primary-color)" }} 
               >
-                <h2 className="text-2xl font-extrabold">
+                <h2 className="text-2xl font-bold">
                   Informações de Contato
                 </h2>
 
                 {/* Localização */}
                 <div className="flex items-start gap-4 pt-4">
-                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#1f1f1f] text-(--primary-color)">
-                    <MapPin size={20} />
+                  <span className="flex h-14 w-14 items-center justify-center rounded-xl bg-[#1f1f1f] text-(--primary-color)">
+                    <MapPin size={24} />
                   </span>
 
                   <div>
@@ -254,8 +253,8 @@ export default function ContatoPage() {
                             rel="nofollow noreferrer"
                             className="flex items-center gap-4 hover:opacity-80 transition"
                           >
-                            <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#1f1f1f] text-(--primary-color)">
-                              <Icon className="h-5 w-5" />
+                            <span className="flex h-14 w-14 items-center justify-center rounded-xl bg-[#1f1f1f] text-(--primary-color)">
+                              <Icon size={24} />
                             </span>
                             <span className="font-medium">{item.label}</span>
                           </a>
@@ -269,8 +268,8 @@ export default function ContatoPage() {
                     href={contactInfo.email.href}
                     className="flex items-center gap-4 hover:opacity-80 transition"
                   >
-                    <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#1f1f1f] text-(--primary-color)">
-                      <EmailIcon className="h-5 w-5" />
+                    <span className="flex h-14 w-14 items-center justify-center rounded-xl bg-[#1f1f1f] text-(--primary-color)">
+                      <EmailIcon size={24} />
                     </span>
                     <span className="font-medium">
                       {contactInfo.email.label}

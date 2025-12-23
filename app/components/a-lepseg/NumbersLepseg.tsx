@@ -40,7 +40,6 @@ export default function NumbersLepseg() {
       <div className="mx-auto max-w-5xl px-4">
         <div
           className="
-          
             flex flex-col md:flex-row
             divide-y md:divide-y-0 md:divide-x divide-white/20
             py-6 md:py-8

@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function SobreSection() {
   return (
     <section className="relative  text-white py-20 overflow-hidden">
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-6">
         <div className="grid gap-8 lg:grid-cols-2 items-start">
           {/* ===== ESQUERDA ===== */}
           <div>
@@ -14,7 +14,7 @@ export default function SobreSection() {
             <span
               className="
                 inline-flex items-center gap-2
-                rounded-full border border-white/25
+                rounded-xl border bg-white/10 border-white/755
                 px-4 py-1
                 text-[10px] uppercase tracking-[0.24em]
                 text-white/70
@@ -98,13 +98,13 @@ export default function SobreSection() {
           <div
             className="
               rounded-2xl
-              bg-[#FFFFFF0D]
-              px-8 py-30
+              bg-[#ffffff02]
+              px-8 py-30 border-white/15
               shadow-xl h-full
             "
           >
             <h3 className="text-2xl font-semibold text-(--primary-color)">
-              O nome LEPSEG carrega nossa essência:
+              O nome LEPSEG carrega nossa <br /> essência:
             </h3>
 
             <p className="mt-4 text-sm text-white/70 leading-relaxed">

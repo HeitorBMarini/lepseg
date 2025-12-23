@@ -111,9 +111,16 @@ export default function GallerySection() {
               VEJA TODAS AS OBRAS
             </Link>
 
-            <div className="mt-4 flex items-center gap-2 text-xs text-white/45">
+            <div className="mt-4 flex items-center gap-2 text-md text-white/45">
               <span>Arraste para cima!</span>
-              <span className="opacity-70">↗</span>
+              <Image
+                src="/imgs/arraste.png"
+                alt="Arraste"
+                width={24}
+                height={24}
+                className="object-contain object-left"
+                priority
+              />
             </div>
           </div>
 

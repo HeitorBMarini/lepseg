@@ -5,9 +5,9 @@ import Image from "next/image";
 export default function EssenciaSection() {
   return (
     <section className="relative py-20 text-white">
-      <div className="relative z-10 max-w-6xl mx-auto px-6">
+      <div className="relative z-10 max-w-6xl mx-auto py-14 px-6 bg-[#323232] rounded-md border-white/10 border">
         {/* TOPO */}
-        <div className="text-center max-w-3xl mx-auto">
+        <div className="text-center max-w-3xl mx-auto ">
           <span
             className="
               inline-flex items-center gap-2
@@ -48,7 +48,7 @@ export default function EssenciaSection() {
             className="
     relative
     rounded-2xl
-    bg-[#FFFFFF0D]
+    bg-[#363636]
     px-6 py-10
     text-center
     transition
@@ -86,7 +86,7 @@ overflow-hidden
              className="
     relative
     rounded-2xl
-    bg-[#FFFFFF0D]
+    bg-[#363636]
     px-6 py-10
     text-center
     transition
@@ -127,7 +127,7 @@ overflow-hidden
              className="
     relative
     rounded-2xl
-    bg-[#FFFFFF0D]
+    bg-[#363636]
     px-6 py-10
     text-center
     transition

@@ -89,7 +89,7 @@ export default function CTASection() {
         </div>
 
         {/* RODAPÉ */}
-        <div className="mt-14 border-t border-white/70 pt-6 text-sm text-white/80">
+        <div className="mt-14 border-t border-white pt-6 text-md text-white/80">
           <p>
             Horário de atendimento: Segunda a Sexta, 8h às 18h | Sábado, 8h às
             12h

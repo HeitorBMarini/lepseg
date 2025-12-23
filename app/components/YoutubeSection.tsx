@@ -62,7 +62,7 @@ export default function YoutubeSection() {
               rel="noopener noreferrer"
               className="
                 inline-flex items-center gap-3
-                px-6 py-3 rounded-md
+                px-6 py-3 rounded-xl
                 bg-(--primary-color) text-black
                 font-semibold text-sm
                 hover:brightness-110 transition uppercase
@@ -83,7 +83,7 @@ export default function YoutubeSection() {
 /* ===================== */
 function VideoThumb({ src }: { src: string }) {
   return (
-    <div className="relative aspect-video rounded-xl overflow-hidden bg-black/40">
+    <div className="relative aspect-video rounded-2xl overflow-hidden bg-black/40">
       <Image src={src} alt="Vídeo" fill className="object-cover opacity-80" />
 
       <div className="absolute inset-0 flex items-center justify-center">

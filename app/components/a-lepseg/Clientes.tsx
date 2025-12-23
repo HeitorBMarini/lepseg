@@ -59,7 +59,7 @@ export default function ParceirosSection() {
             Clientes
           </span>
 
-          <h2 className="mt-4 text-2xl md:text-3xl font-semibold text-(--primary-color) ">
+          <h2 className="mt-4 text-2xl md:text-3xl font-light text-(--primary-color) ">
             Nossos{" "}
             <span className="text-(--primary-color) font-extrabold">
               Parceiros

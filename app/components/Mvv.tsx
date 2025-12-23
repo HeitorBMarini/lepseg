@@ -46,7 +46,7 @@ export default function MVVSection() {
   const current = tabs.find((t) => t.key === active)!;
 
   return (
-    <div className="relative overflow-hidden text-white -top-35">
+    <div className="relative overflow-hidden text-white -top-40">
       {/* BG caminhão (atrás de tudo) */}
       <div className="absolute inset-0 -z-10">
         <Image
@@ -54,14 +54,14 @@ export default function MVVSection() {
           alt="Caminhão"
           fill
           priority
-          className="object-contain object-top"
+          className="object-contain object-top -top-10"
         />
       </div>
 
       {/* overlay escuro pra garantir contraste (opcional, mas recomendado) */}
       <div className="absolute inset-0 -z-10" />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6 md:pt-16 pt-39 pb-8">
+      <div className="relative z-10 max-w-6xl mx-auto px-6 md:pt-16 pt-40 pb-8">
         {/* topo (como no print) */}
         <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.28em] text-white/70">
           <Settings className="text-(--primary-color)" size={16} />
@@ -96,7 +96,7 @@ export default function MVVSection() {
                     onClick={() => setActive(t.key)}
                     className={`
                       flex items-center justify-center gap-3
-                      py-5 text-sm font-semibold md:p-0 p-6
+                      md:py-5 text-sm font-semibold md:p-4 p-6
                       transition
                       ${
                         isActive

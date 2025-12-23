@@ -70,7 +70,7 @@ export default function DepoimentosSection() {
           </div>
 
           {/* CONTEÚDO (DIREITA) */}
-          <div className="pt-2">
+          <div className="md:pt-20 pt-2">
             {/* badge pequena (como no print) */}
             <div className="flex items-center gap-2 text-[12px] uppercase tracking-[0.16em] text-white">
               <Settings
