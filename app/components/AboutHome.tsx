@@ -91,8 +91,11 @@ export default function AboutHome() {
                 alt="Ícone de inovação"
                 width={75}
                 height={75}
-                className="object-contain "
-              />
+className="
+    object-contain
+    w-12 h-12
+    md:w-7 md:h-7
+  "              />
               <div className="space-y-0.5">
                 <p className="text-md font-semibold">Inovação</p>
                 <p className="text-[12px] text-white/70">
@@ -108,7 +111,9 @@ export default function AboutHome() {
                 alt="Ícone de confiabilidade"
                 width={75}
                 height={75}
-                className="object-contain"
+                className="object-contain
+    w-12 h-12
+    md:w-7 md:h-7"
               />
               <div className="space-y-0.5">
                 <p className="text-md font-semibold">Confiabilidade</p>
@@ -125,7 +130,9 @@ export default function AboutHome() {
                 alt="Ícone de parceria"
                 width={75}
                 height={75}
-                className="object-contain"
+                className="object-contain
+    w-12 h-12
+    md:w-7 md:h-7"
               />
               <div className="space-y-0.5">
                 <p className="text-md font-semibold">Parceria</p>

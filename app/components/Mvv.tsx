@@ -61,7 +61,7 @@ export default function MVVSection() {
       {/* overlay escuro pra garantir contraste (opcional, mas recomendado) */}
       <div className="absolute inset-0 -z-10" />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6 md:pt-16 pt-40 pb-8">
+      <div className="relative z-10 max-w-6xl mx-auto px-6 md:pt-16 pt-47 pb-8">
         {/* topo (como no print) */}
         <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.28em] text-white/70">
           <Settings className="text-(--primary-color)" size={16} />
