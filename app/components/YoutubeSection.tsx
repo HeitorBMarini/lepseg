@@ -7,7 +7,6 @@ export default function YoutubeSection() {
   const youtube = contactInfo.socialGroup.items.find(
     (item) => item.label === "YouTube"
   );
-  const videos = ["/videos/video-1.mp4", "/videos/video-2.mp4"];
 
   return (
     <section className="relative bg-[#282828] text-white py-20 overflow-hidden">
@@ -29,24 +28,26 @@ export default function YoutubeSection() {
           {/* COLUNA ESQUERDA (apenas 1 vídeo) */}
           <div className="relative rounded-2xl overflow-hidden bg-black/40">
             <video
-              src={videos[1]}
-              className="w-full aspect-video object-cover h-100"
+              src="/videos/video-1.mp4"
+              className="w-full aspect-video object-cover h-full md:h-182.5 lg:h-120"
               controls
               muted
               loop
               playsInline
+              preload="metadata"
             />
           </div>
 
           {/* COLUNA DIREITA (vídeo principal) */}
           <div className="relative rounded-3xl overflow-hidden shadow-xl bg-black/40">
             <video
-              src={videos[0]}
-              className="w-full aspect-video object-cover h-100"
+              src="/videos/video-2.mp4"
+              className="w-full aspect-video object-cover h-full md:h-182.5 lg:h-120"
               controls
               muted
               loop
               playsInline
+              preload="metadata"
             />
           </div>
         </div>
