@@ -111,17 +111,7 @@ export default function GallerySection() {
               VEJA TODAS AS OBRAS
             </Link>
 
-            <div className="mt-4 flex items-center gap-2 text-md text-white/45">
-              <span>Arraste para cima!</span>
-              <Image
-                src="/imgs/arraste.png"
-                alt="Arraste"
-                width={24}
-                height={24}
-                className="object-contain object-left"
-                priority
-              />
-            </div>
+           
           </div>
 
           {/* COLUNA DIREITA (MOSAICO COM SCROLL NO MOUSE) */}

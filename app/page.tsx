@@ -23,7 +23,6 @@ export default function Home() {
       <NossoProcesso/>
       <Escolher/>
       <TreinamentosCarousel/>
-      <Testimonal/>
       <GallerySection/>
       <YoutubeSection/>
       <Cta/>

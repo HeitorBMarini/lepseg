@@ -4,7 +4,6 @@ import EscolherNew from "../components/a-lepseg/Escolher-new";
 import NossoProcesso from "../components/NossoProcesso";
 import Cta from "../components/Cta";
 import Footer from "../components/Footer";
-import Clientes from "../components/a-lepseg/Clientes";
 import TreinamentosGrid from "../components/treinamento/Treinamento-cards";
 
 export default function Treinamentos() {
@@ -18,7 +17,6 @@ export default function Treinamentos() {
       <TreinamentosGrid/>
       <NossoProcesso/>
       <EscolherNew/>
-      <Clientes/>
       <Cta/>
       <Footer/>
     </>

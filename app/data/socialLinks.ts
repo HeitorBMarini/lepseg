@@ -8,7 +8,7 @@ export const socialLinks = [
   },
   {
     name: "youtube",
-    href: "https://www.youtube.com/@lordtec", // ajuste se necessário
+    href: "https://www.youtube.com/@lordtec", 
     icon: FaYoutube,
   },
 ];

@@ -7,7 +7,6 @@ import Essencia from "../components/a-lepseg/Essencia";
 import NossoProcesso from "../components/NossoProcesso";
 import Cta from "../components/Cta";
 import Footer from "../components/Footer";
-import Clientes from "../components/a-lepseg/Clientes";
 
 export default function Alepseg() {
   return (
@@ -22,7 +21,6 @@ export default function Alepseg() {
       <Essencia/>
       <NossoProcesso/>
       <EscolherNew/>
-      <Clientes/>
       <Cta/>
       <Footer/>
     </>
