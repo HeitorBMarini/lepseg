@@ -26,17 +26,14 @@ export default function YoutubeSection() {
         {/* 2 COLUNAS */}
         <div className="grid gap-3 lg:grid-cols-[2fr_2fr] items-start">
           {/* COLUNA ESQUERDA (apenas 1 vídeo) */}
-          <div className="relative rounded-2xl overflow-hidden bg-black/40">
-            <video
-              className="w-full aspect-video object-cover h-100 md:h-112.5"
-              controls
-              muted
-              loop
-              playsInline
-              preload="metadata"
-            >
-              <source src="/videos/video-1.mp4" type="video/mp4" />
-            </video>
+          <div className="relative aspect-15/16 rounded-2xl overflow-hidden bg-black/40">
+            <iframe
+              src="https://www.youtube.com/embed/TpeTacifJgQ"
+              title="YouTube Short"
+              className="w-full h-full"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
           </div>
 
           {/* COLUNA DIREITA (vídeo principal) */}
