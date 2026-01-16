@@ -84,7 +84,7 @@ export default function GallerySection() {
           {/* COLUNA ESQUERDA */}
           <div className="pt-2">
             <div className="text-[11px] uppercase tracking-[0.32em] text-(--primary-color)">
-              VEJA AS
+              VEJA A
             </div>
 
             <h2 className="mt-2 text-3xl md:text-4xl font-light text-white/90">
@@ -163,12 +163,7 @@ export default function GallerySection() {
                   {/* overlay */}
                   <div className="absolute inset-0 bg-black/25" />
 
-                  {/* título */}
-                  <div className="absolute left-5 bottom-4 right-5">
-                    <div className="text-sm font-semibold drop-shadow">
-                      {it.title}
-                    </div>
-                  </div>
+                  
                 </article>
               ))}
             </div>

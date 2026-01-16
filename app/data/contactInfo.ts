@@ -1,4 +1,4 @@
-import { Phone, Mail } from "lucide-react";
+import { Phone, Mail, Youtube, Instagram } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 
 export const contactInfo = {
@@ -6,26 +6,57 @@ export const contactInfo = {
     title: "Telefones",
     items: [
       {
-        label: "(19) 9 9994-0028",
-        href: "tel:+551999940028",
+        label: "(11) 94030-3050",
+        href: "tel:+5511940303050",
         icon: Phone,
       },
       {
-        label: "WhatsApp",
-        href: "https://wa.me/551999940028",
+        label: "(11) 94030-3050",
+        href: "https://wa.me/5511940303050",
         icon: FaWhatsapp,
       },
     ],
   },
 
-  email: {
-    label: "apmae.lasertech@hotmail.com",
-    href: "mailto:apmae.lasertech@hotmail.com",
-    icon: Mail,
+  emailGroup: {
+    title: "E-mails",
+    items: [
+      {
+        label: "Lindonorribeiro@lepseg.com",
+        href: "mailto:Lindonorribeiro@lepseg.com",
+        icon: Mail,
+      },
+      {
+        label: "Pedroribeiro@lepseg.com",
+        href: "mailto:Pedroribeiro@lepseg.com",
+        icon: Mail,
+      },
+      {
+        label: "contato@lepseg.com",
+        href: "mailto:contato@lepseg.com",
+        icon: Mail,
+      },
+    ],
+  },
+
+  socialGroup: {
+    title: "Redes",
+    items: [
+      {
+        label: "YouTube",
+        href: "https://www.youtube.com/channel/UCQv8jpNa3bh8VaGkUm6YPKg/posts?pvf=CAI%253D",
+        icon: Youtube,
+      },
+      {
+        label: "Instagram",
+        href: "https://www.instagram.com/lepseg_assessoria/",
+        icon: Instagram,
+      },
+    ],
   },
 
   location: {
     title: "Localização",
-    text: "Rod. Vereador Geraldo Dias, 1325,\nB. Leitão - Louveira/SP",
+    text: "Rua Francisco de Paula Ferraiol, 213\nSão Paulo/SP\nCEP: 05797-290",
   },
 };

@@ -6,19 +6,18 @@ import { MapPin, Phone, Mail, ChevronUp } from "lucide-react";
 import { contactInfo } from "@/app/data/contactInfo";
 import { socialLinks } from "../data/socialLinks";
 
-
 const navLinks = [
   { label: "Home", href: "/" },
-  { label: "Quem Somos", href: "/a-lepseg" }, 
+  { label: "Quem Somos", href: "/a-lepseg" },
   { label: "Treinamentos", href: "/treinamentos" },
   { label: "Galeria", href: "/galeria" },
   { label: "Contato", href: "/contato" },
-  { label: "Mapa do Site", href: "/mapa-do-site" }, 
+  { label: "Mapa do Site", href: "/mapa-do-site" },
 ];
 
 export default function Footer() {
   const phone = contactInfo.phoneGroup.items?.[0]; // telefone
-  const email = contactInfo.email;
+  const email = contactInfo.emailGroup.items?.[0];
 
   return (
     <footer
@@ -44,20 +43,23 @@ export default function Footer() {
               className="object-contain"
             />
 
-            {/* social (exemplo) */}
             <div className="mt-6 flex items-center justify-center lg:justify-start gap-4 text-white/80">
-                            {socialLinks.map((s) => {
+              {contactInfo.socialGroup.items.map((s, index) => {
                 const Icon = s.icon;
+
                 return (
-                  <a key={s.name} href={s.href} target="_blank" rel="nofollow noopener noreferrer"
+                  <a
+                    key={index}
+                    href={s.href}
+                    target="_blank"
+                    rel="nofollow noopener noreferrer"
                     className="h-9 w-9 rounded-full border border-white/15 flex items-center justify-center hover:border-white/35 transition"
-                    aria-label={s.name}
+                    aria-label={s.label}
                   >
                     <Icon size={16} />
                   </a>
                 );
               })}
-              
             </div>
           </div>
 
@@ -93,24 +95,39 @@ export default function Footer() {
               </div>
 
               {/* Telefone */}
-              {phone && (
+              {/* Telefones (Telefone + WhatsApp) */}
+              {contactInfo.phoneGroup.items.map((item, index) => {
+                const Icon = item.icon;
+
+                return (
+                  <a
+                    key={index}
+                    href={item.href}
+                    target={item.href.startsWith("http") ? "_blank" : undefined}
+                    rel={
+                      item.href.startsWith("http")
+                        ? "noopener noreferrer"
+                        : undefined
+                    }
+                    className="flex items-center gap-2 justify-center lg:justify-start hover:text-white transition"
+                  >
+                    <Icon size={16} className="text-(--primary-color)" />
+                    <span>{item.label}</span>
+                  </a>
+                );
+              })}
+
+              {/* E-mails */}
+              {contactInfo.emailGroup.items.map((email, index) => (
                 <a
-                  href={phone.href}
+                  key={index}
+                  href={email.href}
                   className="flex items-center gap-2 justify-center lg:justify-start hover:text-white transition"
                 >
-                  <Phone className="text-(--primary-color)" size={16} />
-                  <span>{phone.label}</span>
+                  <email.icon className="text-(--primary-color)" size={16} />
+                  <span>{email.label}</span>
                 </a>
-              )}
-
-              {/* Email */}
-              <a
-                href={email.href}
-                className="flex items-center gap-2 justify-center lg:justify-start hover:text-white transition"
-              >
-                <Mail className="text-(--primary-color)" size={16} />
-                <span>{email.label}</span>
-              </a>
+              ))}
             </div>
           </div>
         </div>
@@ -121,8 +138,6 @@ export default function Footer() {
         {/* BOTTOM */}
         <div className="mt-6 flex flex-col md:flex-row items-center justify-center gap-4 text-xs text-white/50">
           <span>Copyright © LepSeg</span>
-
-        
         </div>
       </div>
 
@@ -139,7 +154,7 @@ export default function Footer() {
         "
         aria-label="Voltar ao topo"
       >
-       <ChevronUp />
+        <ChevronUp />
       </button>
     </footer>
   );

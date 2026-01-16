@@ -1,11 +1,13 @@
 "use client";
 
-import Image from "next/image";
 import { FaYoutube } from "react-icons/fa";
-import { socialLinks } from "@/app/data/socialLinks";
+import { contactInfo } from "../data/contactInfo";
 
 export default function YoutubeSection() {
-  const youtube = socialLinks.find((s) => s.name === "youtube");
+  const youtube = contactInfo.socialGroup.items.find(
+    (item) => item.label === "YouTube"
+  );
+  const videos = ["/videos/video-1.mp4", "/videos/video-2.mp4"];
 
   return (
     <section className="relative bg-[#282828] text-white py-20 overflow-hidden">
@@ -22,34 +24,30 @@ export default function YoutubeSection() {
           </p>
         </div>
 
-        {/* GRID DE VÍDEOS */}
-        <div className="grid gap-6 lg:grid-cols-[1fr_2fr_1fr] items-center">
-          {/* COLUNA ESQUERDA */}
-          <div className="grid gap-4">
-            {["/imgs/youtube/yt-1.webp", "/imgs/youtube/yt-2.webp"].map(
-              (img, i) => (
-                <VideoThumb key={i} src={img} />
-              )
-            )}
-          </div>
-
-          {/* VÍDEO PRINCIPAL */}
-          <div className="relative aspect-video rounded-3xl overflow-hidden shadow-xl">
-            <Image
-              src="/imgs/youtube/yt-1.webp"
-              alt="Vídeo em destaque"
-              fill
-              className="object-cover"
+        {/* 2 COLUNAS */}
+        <div className="grid gap-3 lg:grid-cols-[2fr_2fr] items-start">
+          {/* COLUNA ESQUERDA (apenas 1 vídeo) */}
+          <div className="relative rounded-2xl overflow-hidden bg-black/40">
+            <video
+              src={videos[1]}
+              className="w-full aspect-video object-cover h-100"
+              controls
+              muted
+              loop
+              playsInline
             />
           </div>
 
-          {/* COLUNA DIREITA */}
-          <div className="grid gap-4">
-            {["/imgs/youtube/yt-3.webp", "/imgs/youtube/yt-4.webp"].map(
-              (img, i) => (
-                <VideoThumb key={i} src={img} />
-              )
-            )}
+          {/* COLUNA DIREITA (vídeo principal) */}
+          <div className="relative rounded-3xl overflow-hidden shadow-xl bg-black/40">
+            <video
+              src={videos[0]}
+              className="w-full aspect-video object-cover h-100"
+              controls
+              muted
+              loop
+              playsInline
+            />
           </div>
         </div>
 
@@ -61,12 +59,12 @@ export default function YoutubeSection() {
               target="_blank"
               rel="noopener noreferrer"
               className="
-                inline-flex items-center gap-3
-                px-6 py-3 rounded-xl
-                bg-(--primary-color) text-black
-                font-semibold text-sm
-                hover:brightness-110 transition uppercase
-              "
+        inline-flex items-center gap-3
+        px-6 py-3 rounded-xl
+        bg-(--primary-color) text-black
+        font-semibold text-sm
+        hover:brightness-110 transition uppercase
+      "
             >
               Inscreva-se
               <FaYoutube className="text-lg" />
@@ -75,20 +73,5 @@ export default function YoutubeSection() {
         )}
       </div>
     </section>
-  );
-}
-
-/* ===================== */
-/* Thumbnail reutilizável */
-/* ===================== */
-function VideoThumb({ src }: { src: string }) {
-  return (
-    <div className="relative aspect-video rounded-2xl overflow-hidden bg-black/40">
-      <Image src={src} alt="Vídeo" fill className="object-cover opacity-80" />
-
-      <div className="absolute inset-0 flex items-center justify-center">
-        <FaYoutube className="text-white/80 text-3xl" />
-      </div>
-    </div>
   );
 }

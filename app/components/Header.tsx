@@ -21,8 +21,8 @@ export default function Header() {
   const pathname = usePathname();
 
   const phone = contactInfo.phoneGroup.items[0];
-  const email = contactInfo.email;
-
+  const email = contactInfo.emailGroup.items[0];
+  const EmailIcon = email.icon;
 
   const isActive = (href: string) => {
     if (href === "/") return pathname === "/";

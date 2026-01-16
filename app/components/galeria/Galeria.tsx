@@ -50,25 +50,22 @@ export default function GaleriaSection() {
           {big && (
             <GalleryTile
               src={big.src}
-              title={big.title}
               className="h-130 md:h-140 lg:h-130 rounded-2xl"
-              imgClassName="object-cover"
-            />
+              imgClassName="object-cover" title={""}            />
           )}
 
-          <div className="grid gap-5 grid-cols-2 md:grid-cols-3 auto-rows-[165px] md:auto-rows-[170px]">
+          <div className="grid gap-5 grid-cols-2 md:grid-cols-3 auto-rows-[165px] md:auto-rows-[170px] h-100">
             {thumbs.map((it, idx) => (
               <GalleryTile
                 key={it.src}
                 src={it.src}
-                title={it.title}
+
                 className={`
                   rounded-2xl
                   ${idx === 0 ? "md:row-span-2 md:col-span-1" : ""}
                   ${idx === 1 ? "md:row-span-2 md:col-span-1" : ""}
                 `}
-                imgClassName="object-cover"
-              />
+                imgClassName="object-cover h-100" title={""}              />
             ))}
           </div>
         </div>
@@ -100,7 +97,7 @@ function GalleryTile({
         src={src}
         alt={title}
         fill
-        sizes="(max-width: 1024px) 100vw, 50vw"
+        sizes="(max-width: 1024px) 100vw, 50vw h-100"
         className={`transition duration-300 group-hover:scale-[1.03] ${imgClassName}`}
       />
 

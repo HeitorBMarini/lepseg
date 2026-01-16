@@ -72,7 +72,8 @@ export default function ContatoPage() {
     }
   }
 
-  const EmailIcon = contactInfo.email.icon;
+  const email = contactInfo.emailGroup.items[0];
+  const EmailIcon = email.icon;
 
   return (
     <>
@@ -100,8 +101,8 @@ export default function ContatoPage() {
 
               <p className="mt-4 text-sm md:text-base text-white/70">
                 Preencha o formulário abaixo ou entre em contato direto pelos
-                nossos canais. <br /> Responderemos em até 2 horas com uma proposta
-                personalizada.
+                nossos canais. <br /> Responderemos em até 2 horas com uma
+                proposta personalizada.
               </p>
             </div>
 
@@ -215,14 +216,11 @@ export default function ContatoPage() {
                 `}</style>
               </div>
 
-
               <aside
                 className="rounded-2xl mt-8 p-7 md:p-8 text-[#1b1b1b] shadow-xl"
-                style={{ backgroundColor: "var(--primary-color)" }} 
+                style={{ backgroundColor: "var(--primary-color)" }}
               >
-                <h2 className="text-2xl font-bold">
-                  Informações de Contato
-                </h2>
+                <h2 className="text-2xl font-bold">Informações de Contato</h2>
 
                 {/* Localização */}
                 <div className="flex items-start gap-4 pt-4">
@@ -265,29 +263,28 @@ export default function ContatoPage() {
 
                   {/* Email */}
                   <a
-                    href={contactInfo.email.href}
+                    href={email.href}
                     className="flex items-center gap-4 hover:opacity-80 transition"
                   >
                     <span className="flex h-14 w-14 items-center justify-center rounded-xl bg-[#1f1f1f] text-(--primary-color)">
                       <EmailIcon size={24} />
                     </span>
-                    <span className="font-medium">
-                      {contactInfo.email.label}
-                    </span>
+                    <span className="font-medium">{email.label}</span>
                   </a>
                 </div>
 
                 {/* Redes sociais */}
                 <div className="mt-8 flex items-center gap-3">
-                  {socialLinks.map((social) => {
-                    const Icon = social.icon as any;
+                  {contactInfo.socialGroup.items.map((social, index) => {
+                    const Icon = social.icon;
+
                     return (
                       <a
-                        key={social.name}
+                        key={index}
                         href={social.href}
                         target="_blank"
                         rel="nofollow noreferrer"
-                        aria-label={social.name}
+                        aria-label={social.label}
                         className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#1f1f1f]/30 hover:bg-white/30 transition"
                       >
                         <Icon className="h-4.5 w-4.5" />
