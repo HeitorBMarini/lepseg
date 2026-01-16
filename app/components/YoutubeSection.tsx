@@ -28,27 +28,29 @@ export default function YoutubeSection() {
           {/* COLUNA ESQUERDA (apenas 1 vídeo) */}
           <div className="relative rounded-2xl overflow-hidden bg-black/40">
             <video
-              src="/videos/video-1.mp4"
-              className="w-full aspect-video object-cover h-full md:h-182.5 lg:h-120"
+              className="w-full aspect-video object-cover h-100 md:h-112.5"
               controls
               muted
               loop
               playsInline
               preload="metadata"
-            />
+            >
+              <source src="/videos/video-1.mp4" type="video/mp4" />
+            </video>
           </div>
 
           {/* COLUNA DIREITA (vídeo principal) */}
           <div className="relative rounded-3xl overflow-hidden shadow-xl bg-black/40">
             <video
-              src="/videos/video-2.mp4"
-              className="w-full aspect-video object-cover h-full md:h-182.5 lg:h-120"
+              className="w-full aspect-video object-cover h-100 md:h-112.5"
               controls
               muted
               loop
               playsInline
               preload="metadata"
-            />
+            >
+              <source src="/videos/video-2.mp4" type="video/mp4" />
+            </video>
           </div>
         </div>
 
