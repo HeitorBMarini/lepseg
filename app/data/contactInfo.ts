@@ -1,4 +1,4 @@
-import { Phone, Mail, Youtube, Instagram } from "lucide-react";
+import { Phone, Mail, Youtube, Instagram, Linkedin } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 
 export const contactInfo = {
@@ -51,6 +51,11 @@ export const contactInfo = {
         label: "Instagram",
         href: "https://www.instagram.com/lepseg_assessoria/",
         icon: Instagram,
+      },
+      {
+        label: "LinkedIn",
+        href: "https://www.linkedin.com/company/lepseg-assesssria-treinamentos/",
+        icon: Linkedin,
       },
     ],
   },

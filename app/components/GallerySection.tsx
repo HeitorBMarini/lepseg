@@ -1,7 +1,6 @@
-// app/components/GallerySection.tsx
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Search } from "lucide-react";
@@ -12,55 +11,22 @@ type GalleryItem = {
   id: string;
   title: string;
   src: string;
-  colSpan?: string; // tailwind: col-span-?
-  rowSpan?: string; // tailwind: row-span-?
 };
-
-function clamp(n: number, min: number, max: number) {
-  return Math.max(min, Math.min(max, n));
-}
 
 export default function GallerySection() {
   const items: GalleryItem[] = useMemo(
     () => [
-      {
-        id: "1",
-        title: "Nome do Projeto",
-        src: "/imgs/galeria/galeria-1.webp",
-        colSpan: "col-span-2",
-        rowSpan: "row-span-2",
-      },
-      {
-        id: "2",
-        title: "Nome do Projeto",
-        src: "/imgs/galeria/galeria-2.webp",
-        colSpan: "col-span-1",
-        rowSpan: "row-span-2",
-      },
-      {
-        id: "3",
-        title: "Nome do Projeto",
-        src: "/imgs/galeria/galeria-3.webp",
-        colSpan: "col-span-",
-        rowSpan: "row-span-2",
-      },
-      {
-        id: "4",
-        title: "Nome do Projeto",
-        src: "/imgs/galeria/galeria-4.webp",
-        colSpan: "col-span-2",
-        rowSpan: "row-span-2",
-      },
-      {
-        id: "5",
-        title: "Nome do Projeto",
-        src: "/imgs/galeria/galeria-5.webp",
-        colSpan: "col-span-1",
-        rowSpan: "row-span-2",
-      },
+      { id: "1", title: "Nome do Projeto", src: "/imgs/galeria/galeria-1.webp" },
+      { id: "2", title: "Nome do Projeto", src: "/imgs/galeria/galeria-2.webp" },
+      { id: "3", title: "Nome do Projeto", src: "/imgs/galeria/galeria-3.webp" },
+      { id: "4", title: "Nome do Projeto", src: "/imgs/galeria/galeria-4.webp" },
+      { id: "5", title: "Nome do Projeto", src: "/imgs/galeria/galeria-5.webp" },
     ],
     []
   );
+
+  const big = items[0];
+  const thumbs = items.slice(1);
 
   useEffect(() => {
     NativeFancybox.bind("[data-fancybox='galeria']", {
@@ -73,26 +39,10 @@ export default function GallerySection() {
     };
   }, []);
 
-  const viewportRef = useRef<HTMLDivElement | null>(null);
-  const contentRef = useRef<HTMLDivElement | null>(null);
-  const [offsetY, setOffsetY] = useState(0);
-
-  const onWheel: React.WheelEventHandler<HTMLDivElement> = (e) => {
-    e.preventDefault();
-
-    const viewport = viewportRef.current;
-    const content = contentRef.current;
-    if (!viewport || !content) return;
-
-    const maxScroll = Math.max(0, content.scrollHeight - viewport.clientHeight);
-    const next = offsetY + e.deltaY * 0.9;
-    setOffsetY(clamp(next, 0, maxScroll));
-  };
-
   return (
     <section className="relative bg-[#282828] text-white py-16 md:py-22 overflow-hidden">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="grid gap-10 lg:grid-cols-[360px_1fr] items-start">
+        <div className="grid gap-10 lg:grid-cols-[300px_1fr] items-start">
           {/* COLUNA ESQUERDA */}
           <div className="pt-2">
             <div className="text-[11px] uppercase tracking-[0.32em] text-(--primary-color)">
@@ -124,73 +74,72 @@ export default function GallerySection() {
             </Link>
           </div>
 
-          {/* COLUNA DIREITA (MOSAICO COM SCROLL NO MOUSE + FANCYBOX) */}
-          <div
-            ref={viewportRef}
-            onWheel={onWheel}
-            className="
-              relative
-              h-80 sm:h-110 md:h-105
-              overflow-hidden
-              rounded-2xl
-              bg-white/0
-            "
-            style={{ overscrollBehavior: "contain" as any }}
-          >
-            <div
-              ref={contentRef}
-              className="
-                grid grid-cols-4 auto-rows-[92px] md:auto-rows-[110px]
-                gap-4
-                pr-2
-                will-change-transform
-              "
-              style={{
-                transform: `translate3d(0, ${-offsetY}px, 0)`,
-                transition: "transform 40ms linear",
-              }}
-            >
-              {items.map((it) => (
+          {/* COLUNA DIREITA (GRID IGUAL AO OUTRO EXEMPLO) */}
+          <div className="relative">
+            <div className="mt-8 grid gap-6 lg:grid-cols-[1.05fr_2fr]">
+              {/* IMAGEM GRANDE */}
+              {big && (
                 <a
-                  key={it.id}
-                  href={it.src}
+                  href={big.src}
                   data-fancybox="galeria"
-                  data-caption={it.title}
-                  className={`
-                    group relative overflow-hidden rounded-2xl bg-white/5
-                    ${it.colSpan ?? "col-span-2"}
-                    ${it.rowSpan ?? "row-span-1"}
-                  `}
-                  title={it.title}
+                  data-caption={big.title}
+                  className="group relative block h-130 md:h-140 lg:h-130 rounded-2xl overflow-hidden bg-white/5"
+                  title={big.title}
                 >
                   <Image
-                    src={it.src}
-                    alt={it.title}
+                    src={big.src}
+                    alt={big.title}
                     fill
-                    className="object-cover transition duration-300 group-hover:scale-[1.01]"
-                    sizes="(max-width: 1024px) 60vw, 520px"
+                    className="object-cover transition duration-300 group-hover:scale-[1.02]"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                   />
 
-                  {/* overlay */}
                   <span className="absolute inset-0 bg-black/25 group-hover:bg-black/40 transition" />
 
-                  {/* ícone */}
                   <span className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-                    <span className="h-14 w-14 rounded-full flex items-center justify-center bg-black/35">
-                      <Search className="text-white" size={28} />
+                    <span className="h-16 w-16 rounded-full flex items-center justify-center bg-black/35">
+                      <Search className="text-white" size={32} />
                     </span>
                   </span>
-
-                  {/* título */}
-                  <span className="absolute bottom-3 left-3 right-3 text-center text-[12px] font-semibold text-white/95 drop-shadow opacity-0 group-hover:opacity-100 transition">
-                    {it.title}
-                  </span>
                 </a>
-              ))}
-            </div>
+              )}
 
-          
+              {/* GRID DE THUMBS */}
+              <div className="grid gap-5 grid-cols-2 md:grid-cols-3 auto-rows-[165px] md:auto-rows-[170px] h-100">
+                {thumbs.map((it, idx) => (
+                  <a
+                    key={it.id}
+                    href={it.src}
+                    data-fancybox="galeria"
+                    data-caption={it.title}
+                    className={`
+                      group relative overflow-hidden rounded-2xl bg-white/5
+                      ${idx === 0 ? "md:row-span-2 md:col-span-1" : ""}
+                      ${idx === 1 ? "md:row-span-2 md:col-span-1" : ""}
+                    `}
+                    title={it.title}
+                  >
+                    <Image
+                      src={it.src}
+                      alt={it.title}
+                      fill
+                      className="object-cover transition duration-300 group-hover:scale-[1.03]"
+                      sizes="(max-width: 1024px) 50vw, 25vw"
+                    />
+
+                    <span className="absolute inset-0 bg-black/25 group-hover:bg-black/40 transition" />
+
+                    <span className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+                      <span className="h-12 w-12 rounded-full flex items-center justify-center bg-black/35">
+                        <Search className="text-white" size={24} />
+                      </span>
+                    </span>
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
+          {/* /COLUNA DIREITA */}
         </div>
       </div>
     </section>

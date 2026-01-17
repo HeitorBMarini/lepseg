@@ -19,7 +19,7 @@ type FormState = {
 export default function ContatoPage() {
   const howOptions = useMemo(
     () => ["Google", "Instagram", "Indicação", "Anúncio", "Outro"],
-    []
+    [],
   );
 
   const [form, setForm] = useState<FormState>({
@@ -56,7 +56,7 @@ export default function ContatoPage() {
 
       if (!res.ok) {
         throw new Error(
-          data?.error || "Não foi possível enviar. Tente novamente."
+          data?.error || "Não foi possível enviar. Tente novamente.",
         );
       }
 
@@ -84,7 +84,7 @@ export default function ContatoPage() {
       />
 
       <main className="min-h-[calc(100vh-0px)] bg-[#2b2b2b] text-white">
-        <section className="px-6 py-14 md:py-20">
+        <section className="px-3 py-14 md:py-20">
           <div className="mx-auto max-w-6xl">
             {/* Header */}
             <div className="text-center max-w-3xl mx-auto">
@@ -217,7 +217,7 @@ export default function ContatoPage() {
               </div>
 
               <aside
-                className="rounded-2xl mt-8 p-7 md:p-8 text-[#1b1b1b] shadow-xl"
+                className="rounded-2xl mt-0 p-7 md:p-8 text-[#1b1b1b] shadow-xl"
                 style={{ backgroundColor: "var(--primary-color)" }}
               >
                 <h2 className="text-2xl font-bold">Informações de Contato</h2>
@@ -261,16 +261,25 @@ export default function ContatoPage() {
                     </div>
                   </div>
 
-                  {/* Email */}
-                  <a
-                    href={email.href}
-                    className="flex items-center gap-4 hover:opacity-80 transition"
-                  >
+                  <div className="flex items-start gap-4">
+                    {/* ÍCONE ÚNICO */}
                     <span className="flex h-14 w-14 items-center justify-center rounded-xl bg-[#1f1f1f] text-(--primary-color)">
                       <EmailIcon size={24} />
                     </span>
-                    <span className="font-medium">{email.label}</span>
-                  </a>
+
+                    {/* LISTA DE EMAILS */}
+                    <div className="flex flex-col gap-2">
+                      {contactInfo.emailGroup.items.map((email, i) => (
+                        <a
+                          key={i}
+                          href={email.href}
+                          className="hover:opacity-80 transition font-medium"
+                        >
+                          {email.label}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
                 </div>
 
                 {/* Redes sociais */}
@@ -285,7 +294,7 @@ export default function ContatoPage() {
                         target="_blank"
                         rel="nofollow noreferrer"
                         aria-label={social.label}
-                        className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#1f1f1f]/30 hover:bg-white/30 transition"
+                        className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#1f1f1f]/30 hover:bg-white/10 transition"
                       >
                         <Icon className="h-4.5 w-4.5" />
                       </a>

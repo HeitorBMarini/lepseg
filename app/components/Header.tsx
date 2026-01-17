@@ -167,18 +167,21 @@ export default function Header() {
                 <span>{phone.label}</span>
               </a>
             )}
+            <div className="space-y-1">
+              {contactInfo.emailGroup.items.map((email, i) => {
+                const Icon = email.icon as any;
 
-            <div>
-              <a
-                href={email.href}
-                className="inline-flex items-center gap-2 hover:text-(--primary-color) transition-colors mt-1"
-              >
-                {(() => {
-                  const Icon = email.icon as any;
-                  return <Icon size={18} />;
-                })()}
-                <span>{email.label}</span>
-              </a>
+                return (
+                  <a
+                    key={i}
+                    href={email.href}
+                    className="inline-flex items-center gap-2 hover:text-(--primary-color) transition-colors"
+                  >
+                    <Icon size={18} />
+                    <span>{email.label}</span>
+                  </a>
+                );
+              })}
             </div>
           </div>
 
