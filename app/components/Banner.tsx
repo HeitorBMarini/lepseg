@@ -7,7 +7,7 @@ export default function HeroBanner() {
     <section
       className="
         relative w-full overflow-hidden
-        h-[190vh] md:h-[118vh]
+        h-[108vh] md:h-[118vh]
         pt-24 md:pt-0
       "
     >

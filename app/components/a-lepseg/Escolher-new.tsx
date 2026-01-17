@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { motion, type Variants } from "framer-motion";
 
 type Item = {
   icon: string;
@@ -46,9 +47,31 @@ const ITEMS: Item[] = [
   },
 ];
 
+const ease = [0.16, 1, 0.3, 1] as const;
+
+const container: Variants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.08,
+      delayChildren: 0.08,
+    },
+  },
+};
+
+const card: Variants = {
+  hidden: { opacity: 0, y: 18 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.45, ease },
+  },
+};
+
 function Card({ item }: { item: Item }) {
   return (
-    <article
+    <motion.article
+      variants={card}
       className="
         rounded-2xl bg-[#FFFFFF0D]
         px-7 py-9
@@ -72,7 +95,7 @@ function Card({ item }: { item: Item }) {
       <p className="text-xs text-white/70 leading-relaxed max-w-60">
         {item.desc}
       </p>
-    </article>
+    </motion.article>
   );
 }
 
@@ -81,13 +104,17 @@ export default function EscolherNew() {
   const bottom = ITEMS.slice(4);
 
   return (
-    <section className="relative  text-white py-20 overflow-hidden">
-    
-
+    <section className="relative text-white py-20 overflow-hidden">
       <div className="relative max-w-6xl mx-auto px-6">
-        {/* topo */}
-        <div className="flex flex-col items-center text-center">
-          <span className="inline-flex items-center justify-center rounded-xl bg-[#484848] px-4 py-2 text-[14px] e tracking-[0.24em] text-(--primary-color)">
+        {/* TOPO */}
+        <motion.div
+          className="flex flex-col items-center text-center"
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.55, ease }}
+        >
+          <span className="inline-flex items-center justify-center rounded-xl bg-[#484848] px-4 py-2 text-[14px] tracking-[0.24em] text-(--primary-color)">
             Conheça Aqui
           </span>
 
@@ -97,21 +124,33 @@ export default function EscolherNew() {
               escolher?
             </span>
           </h2>
-        </div>
+        </motion.div>
 
-        {/* linha 1 — 4 cards */}
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {/* LINHA 1 */}
+        <motion.div
+          className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.25 }}
+        >
           {top.map((item, i) => (
             <Card key={i} item={item} />
           ))}
-        </div>
+        </motion.div>
 
-        {/* linha 2 — 3 cards CENTRALIZADOS (igual print) */}
-        <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:max-w-5xl mx-auto">
+        {/* LINHA 2 */}
+        <motion.div
+          className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:max-w-5xl mx-auto"
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.25 }}
+        >
           {bottom.map((item, i) => (
             <Card key={i} item={item} />
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

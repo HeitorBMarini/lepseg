@@ -4,6 +4,7 @@
 import { Settings } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export default function AboutHome() {
   return (
@@ -19,27 +20,30 @@ export default function AboutHome() {
       {/* Fundo com o predio (about.svg) */}
       <div
         className="
-    pointer-events-none 
-    absolute 
-    h-full w-[26%]
-    left-0 
-    top-80  
-  "
+          pointer-events-none 
+          absolute 
+          h-full w-[26%]
+          left-0 
+          top-78
+        "
       >
         <Image
           src="/imgs/about.png"
           alt="Ilustração industrial"
           fill
-          className="
-      object-contain
-      text-transparent
-    "
+          className="object-contain text-transparent"
         />
       </div>
 
       <div className="mx-auto max-w-6xl flex flex-col md:flex-row items-center md:items-stretch gap-10">
         {/* ================== BLOCO ESQUERDO – IMAGEM QUEM ================== */}
-        <div className="w-full md:w-1/2 flex justify-center">
+        <motion.div
+          className="w-full md:w-1/2 flex justify-center"
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+        >
           <div className="relative max-w-md w-full">
             <Image
               src="/imgs/quem.webp"
@@ -50,20 +54,23 @@ export default function AboutHome() {
               priority
             />
           </div>
-        </div>
+        </motion.div>
 
         {/* ================== BLOCO DIREITO – TEXTO + ÍCONES ================== */}
-        <div className="w-full md:w-1/2 space-y-6">
+        <motion.div
+          className="w-full md:w-1/2 space-y-6"
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.7, ease: "easeOut", delay: 0.05 }}
+        >
           {/* labelzinho “Sobre nós” */}
-          <div className="flex items-center gap-2 text-md  tracking-[0.18em] text-white/70">
-            {/* Ícone estilo engrenagem */}
+          <div className="flex items-center gap-2 text-md tracking-[0.18em] text-white/70">
             <Settings
               size={18}
               strokeWidth={2.2}
               className="text-(--primary-color)"
             />
-
-            {/* Texto */}
             <span className="font-bold">Sobre Nós</span>
           </div>
 
@@ -91,11 +98,8 @@ export default function AboutHome() {
                 alt="Ícone de inovação"
                 width={75}
                 height={75}
-className="
-    object-contain
-    w-12 h-12
-    md:w-7 md:h-7
-  "              />
+                className="object-contain w-12 h-12 md:w-7 md:h-7"
+              />
               <div className="space-y-0.5">
                 <p className="text-md font-semibold">Inovação</p>
                 <p className="text-[12px] text-white/70">
@@ -104,16 +108,14 @@ className="
               </div>
             </div>
 
-            {/* Confiabilidade / Escudo */}
+            {/* Confiabilidade */}
             <div className="flex items-center gap-3 rounded-2xl bg-[#ECEDEC0D] px-2 py-2 border border-white/5">
               <Image
                 src="/imgs/icons/escudo.png"
                 alt="Ícone de confiabilidade"
                 width={75}
                 height={75}
-                className="object-contain
-    w-12 h-12
-    md:w-7 md:h-7"
+                className="object-contain w-12 h-12 md:w-7 md:h-7"
               />
               <div className="space-y-0.5">
                 <p className="text-md font-semibold">Confiabilidade</p>
@@ -130,9 +132,7 @@ className="
                 alt="Ícone de parceria"
                 width={75}
                 height={75}
-                className="object-contain
-    w-12 h-12
-    md:w-7 md:h-7"
+                className="object-contain w-12 h-12 md:w-7 md:h-7"
               />
               <div className="space-y-0.5">
                 <p className="text-md font-semibold">Parceria</p>
@@ -147,21 +147,21 @@ className="
           <Link
             href="/a-lepseg"
             className="
-    mt-2 inline-flex items-center justify-center
-    px-6 py-2.5
-    rounded-full
-    border border-(--primary-color)
-    text-(--primary-color)
-    bg-transparent
-    tracking-[0.18em] uppercase
-    text-md md:text-sm font-semibold
-    hover:bg-(--primary-color)/10
-    transition
-  "
+              mt-2 inline-flex items-center justify-center
+              px-6 py-2.5
+              rounded-full
+              border border-(--primary-color)
+              text-(--primary-color)
+              bg-transparent
+              tracking-[0.18em] uppercase
+              text-md md:text-sm font-semibold
+              hover:bg-(--primary-color)/10
+              transition
+            "
           >
             SAIBA MAIS
           </Link>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

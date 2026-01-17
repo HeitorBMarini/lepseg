@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import Image from "next/image";
 import { Settings } from "lucide-react";
+import { motion } from "framer-motion";
 
 type Key = "missao" | "visao" | "valores";
 
@@ -47,7 +48,7 @@ export default function MVVSection() {
 
   return (
     <div className="relative overflow-hidden text-white -top-40">
-      {/* BG caminhão (atrás de tudo) */}
+      {/* BG caminhão */}
       <div className="absolute inset-0 -z-10">
         <Image
           src="/imgs/caminhao.webp"
@@ -58,34 +59,45 @@ export default function MVVSection() {
         />
       </div>
 
-      {/* overlay escuro pra garantir contraste (opcional, mas recomendado) */}
-      <div className="absolute inset-0 -z-10" />
-
       <div className="relative z-10 max-w-6xl mx-auto px-6 md:pt-16 pt-47 pb-8">
-        {/* topo (como no print) */}
-        <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.28em] text-white/70">
-          <Settings className="text-(--primary-color)" size={16} />
-          <span>nossos valores</span>
-        </div>
-
-        <div className="mt-3 grid md:grid-cols-2 gap-10 items-start">
-          <div>
-            <h2 className="text-2xl md:text-3xl font-extralight">
-              Oque nos <span className="font-extrabold">Define e Inspira</span>
-            </h2>
+        {/* TOPO */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+          <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.28em] text-white/70">
+            <Settings className="text-(--primary-color)" size={16} />
+            <span>nossos valores</span>
           </div>
 
-          <p className="text-sm text-white/70 leading-relaxed md:pt-1">
-            Nossos pilares fundamentais guiam cada decisão, cada treinamento e
-            cada relacionamento construído ao longo da nossa jornada na
-            segurança do trabalho.
-          </p>
-        </div>
+          <div className="mt-3 grid md:grid-cols-2 gap-10 items-start">
+            <div>
+              <h2 className="text-2xl md:text-3xl font-extralight">
+                Oque nos{" "}
+                <span className="font-extrabold">Define e Inspira</span>
+              </h2>
+            </div>
 
-        {/* card grande */}
-        <div className="relative mt-10">
-          <div className="rounded-[28px] bg-[#2f2f2f]/95  overflow-hidden">
-            {/* tabs topo */}
+            <p className="text-sm text-white/70 leading-relaxed md:pt-1">
+              Nossos pilares fundamentais guiam cada decisão, cada treinamento e
+              cada relacionamento construído ao longo da nossa jornada na
+              segurança do trabalho.
+            </p>
+          </div>
+        </motion.div>
+
+        {/* CARD GRANDE */}
+        <motion.div
+          className="relative mt-10"
+          initial={{ opacity: 0, y: 60 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
+        >
+          <div className="rounded-[28px] bg-[#2f2f2f]/95 overflow-hidden">
+            {/* tabs */}
             <div className="grid grid-cols-3 border-b border-white">
               {tabs.map((t) => {
                 const isActive = t.key === active;
@@ -95,15 +107,15 @@ export default function MVVSection() {
                     type="button"
                     onClick={() => setActive(t.key)}
                     className={`
-                      flex items-center justify-center gap-3
-                      md:py-5 text-sm font-semibold md:p-4 p-6
-                      transition
-                      ${
-                        isActive
-                          ? "bg-(--primary-color) text-black"
-                          : "text-white/80 hover:text-white"
-                      }
-                    `}
+                  flex items-center justify-center gap-3
+                  md:py-5 text-sm font-semibold md:p-4 p-6
+                  transition
+                  ${
+                    isActive
+                      ? "bg-(--primary-color) text-black"
+                      : "text-white/80 hover:text-white"
+                  }
+                `}
                   >
                     <Image
                       src={t.icon}
@@ -111,19 +123,18 @@ export default function MVVSection() {
                       width={22}
                       height={22}
                       className={`
-    transition
-    ${
-      t.key === "missao"
-        ? isActive
-          ? "brightness-0 invert-0"
-          : "invert opacity-80"
-        : isActive
-        ? "brightness-0"
-        : "opacity-80"
-    }
-  `}
+                    transition
+                    ${
+                      t.key === "missao"
+                        ? isActive
+                          ? "brightness-0 invert-0"
+                          : "invert opacity-80"
+                        : isActive
+                        ? "brightness-0"
+                        : "opacity-80"
+                    }
+                  `}
                     />
-
                     {t.label}
                   </button>
                 );
@@ -146,9 +157,7 @@ export default function MVVSection() {
               </div>
             </div>
           </div>
-
-          {/* borda/ring */}
-        </div>
+        </motion.div>
       </div>
     </div>
   );

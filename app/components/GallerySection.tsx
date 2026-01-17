@@ -1,9 +1,12 @@
 // app/components/GallerySection.tsx
 "use client";
 
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Search } from "lucide-react";
+import { Fancybox as NativeFancybox } from "@fancyapps/ui";
+import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
 type GalleryItem = {
   id: string;
@@ -18,51 +21,63 @@ function clamp(n: number, min: number, max: number) {
 }
 
 export default function GallerySection() {
-  const items: GalleryItem[] = [
-    {
-      id: "1",
-      title: "Nome do Projeto",
-      src: "/imgs/galeria/galeria-1.webp",
-      colSpan: "col-span-2",
-      rowSpan: "row-span-2",
-    },
-    {
-      id: "2",
-      title: "Nome do Projeto",
-      src: "/imgs/galeria/galeria-2.webp",
-      colSpan: "col-span-1",
-      rowSpan: "row-span-2",
-    },
-    {
-      id: "3",
-      title: "Nome do Projeto",
-      src: "/imgs/galeria/galeria-3.webp",
-      colSpan: "col-span-1",
-      rowSpan: "row-span-1",
-    },
-    {
-      id: "4",
-      title: "Nome do Projeto",
-      src: "/imgs/galeria/galeria-4.webp",
-      colSpan: "col-span-2",
-      rowSpan: "row-span-1",
-    },
-    {
-      id: "5",
-      title: "Nome do Projeto",
-      src: "/imgs/galeria/galeria-5.webp",
-      colSpan: "col-span-1",
-      rowSpan: "row-span-1",
-    },
-  ];
+  const items: GalleryItem[] = useMemo(
+    () => [
+      {
+        id: "1",
+        title: "Nome do Projeto",
+        src: "/imgs/galeria/galeria-1.webp",
+        colSpan: "col-span-2",
+        rowSpan: "row-span-2",
+      },
+      {
+        id: "2",
+        title: "Nome do Projeto",
+        src: "/imgs/galeria/galeria-2.webp",
+        colSpan: "col-span-1",
+        rowSpan: "row-span-2",
+      },
+      {
+        id: "3",
+        title: "Nome do Projeto",
+        src: "/imgs/galeria/galeria-3.webp",
+        colSpan: "col-span-",
+        rowSpan: "row-span-2",
+      },
+      {
+        id: "4",
+        title: "Nome do Projeto",
+        src: "/imgs/galeria/galeria-4.webp",
+        colSpan: "col-span-2",
+        rowSpan: "row-span-2",
+      },
+      {
+        id: "5",
+        title: "Nome do Projeto",
+        src: "/imgs/galeria/galeria-5.webp",
+        colSpan: "col-span-1",
+        rowSpan: "row-span-2",
+      },
+    ],
+    []
+  );
+
+  useEffect(() => {
+    NativeFancybox.bind("[data-fancybox='galeria']", {
+      Carousel: { Thumbs: false },
+    });
+
+    return () => {
+      NativeFancybox.unbind("[data-fancybox='galeria']");
+      NativeFancybox.close();
+    };
+  }, []);
 
   const viewportRef = useRef<HTMLDivElement | null>(null);
   const contentRef = useRef<HTMLDivElement | null>(null);
-
   const [offsetY, setOffsetY] = useState(0);
 
   const onWheel: React.WheelEventHandler<HTMLDivElement> = (e) => {
-    // rolar apenas o mosaico (não a página)
     e.preventDefault();
 
     const viewport = viewportRef.current;
@@ -70,10 +85,7 @@ export default function GallerySection() {
     if (!viewport || !content) return;
 
     const maxScroll = Math.max(0, content.scrollHeight - viewport.clientHeight);
-
-    // “velocidade” da rolagem
     const next = offsetY + e.deltaY * 0.9;
-
     setOffsetY(clamp(next, 0, maxScroll));
   };
 
@@ -110,25 +122,21 @@ export default function GallerySection() {
             >
               VEJA TODAS AS OBRAS
             </Link>
-
-           
           </div>
 
-          {/* COLUNA DIREITA (MOSAICO COM SCROLL NO MOUSE) */}
+          {/* COLUNA DIREITA (MOSAICO COM SCROLL NO MOUSE + FANCYBOX) */}
           <div
             ref={viewportRef}
             onWheel={onWheel}
             className="
               relative
-              h-80 sm:h-90 md:h-105
+              h-80 sm:h-110 md:h-105
               overflow-hidden
               rounded-2xl
               bg-white/0
             "
-            // permite preventDefault no wheel (componente client)
             style={{ overscrollBehavior: "contain" as any }}
           >
-            {/* content “mais alto” que o viewport */}
             <div
               ref={contentRef}
               className="
@@ -143,34 +151,45 @@ export default function GallerySection() {
               }}
             >
               {items.map((it) => (
-                <article
+                <a
                   key={it.id}
+                  href={it.src}
+                  data-fancybox="galeria"
+                  data-caption={it.title}
                   className={`
-                    relative overflow-hidden rounded-2xl
-                    bg-white/5
+                    group relative overflow-hidden rounded-2xl bg-white/5
                     ${it.colSpan ?? "col-span-2"}
                     ${it.rowSpan ?? "row-span-1"}
                   `}
+                  title={it.title}
                 >
                   <Image
                     src={it.src}
                     alt={it.title}
                     fill
-                    className="object-cover"
+                    className="object-cover transition duration-300 group-hover:scale-[1.01]"
                     sizes="(max-width: 1024px) 60vw, 520px"
                   />
 
                   {/* overlay */}
-                  <div className="absolute inset-0 bg-black/25" />
+                  <span className="absolute inset-0 bg-black/25 group-hover:bg-black/40 transition" />
 
-                  
-                </article>
+                  {/* ícone */}
+                  <span className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+                    <span className="h-14 w-14 rounded-full flex items-center justify-center bg-black/35">
+                      <Search className="text-white" size={28} />
+                    </span>
+                  </span>
+
+                  {/* título */}
+                  <span className="absolute bottom-3 left-3 right-3 text-center text-[12px] font-semibold text-white/95 drop-shadow opacity-0 group-hover:opacity-100 transition">
+                    {it.title}
+                  </span>
+                </a>
               ))}
             </div>
 
-            {/* fade superior/inferior (pra ficar com cara do print) */}
-            <div className="pointer-events-none absolute inset-x-0 top-0 h-10 bg-gradient-to-b from-[#282828] to-transparent" />
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-[#282828] to-transparent" />
+          
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { motion, type Variants } from "framer-motion";
 
 type Step = {
   n: string;
@@ -67,19 +68,52 @@ function ArrowAfter({ type }: { type?: "down" | "up" }) {
   );
 }
 
+/* ================= ANIMAÇÕES ================= */
+
+const container: Variants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.08,
+      delayChildren: 0.08,
+    },
+  },
+};
+
+const item: Variants = {
+  hidden: { opacity: 0, y: 18 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.45,
+      ease: [0.16, 1, 0.3, 1], // ✅ compatível com TS
+    },
+  },
+};
+
 export default function ProcessoSection() {
   return (
-    <div className=" text-white md:py-5 py-0">
+    <div className="text-white md:py-5 py-0">
       <div className="max-w-6xl mx-auto px-6">
         {/* TOPO */}
-        <div className="flex flex-col items-center text-center">
+        <motion.div
+          className="flex flex-col items-center text-center"
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{
+            duration: 0.55,
+            ease: [0.16, 1, 0.3, 1], // ✅
+          }}
+        >
           <span
             className="
               mb-3 inline-flex items-center justify-center
               rounded-full
               bg-[#FDB41433]
               px-4 py-2
-              text-[12px]  tracking-[0.24em]
+              text-[12px] tracking-[0.24em]
               text-(--primary-color)
             "
           >
@@ -92,14 +126,20 @@ export default function ProcessoSection() {
               Processo
             </span>
           </h2>
-        </div>
+        </motion.div>
 
         {/* GRID */}
         <div className="mt-16 space-y-16">
-     
-          <div className="grid gap-y-14 gap-x-10 sm:grid-cols-2 lg:grid-cols-4">
+          {/* LINHA 1 */}
+          <motion.div
+            className="grid gap-y-14 gap-x-10 sm:grid-cols-2 lg:grid-cols-4"
+            variants={container}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.25 }}
+          >
             {STEPS.slice(0, 4).map((s) => (
-              <article key={s.n} className="relative">
+              <motion.article key={s.n} className="relative" variants={item}>
                 <ArrowAfter type={s.arrow} />
 
                 <div className="text-(--primary-color) text-4xl font-extrabold">
@@ -111,15 +151,20 @@ export default function ProcessoSection() {
                 <p className="mt-3 text-xs leading-relaxed text-white/70 max-w-65 whitespace-pre-line">
                   {s.desc}
                 </p>
-              </article>
+              </motion.article>
             ))}
-          </div>
+          </motion.div>
 
-          {/* LINHA 2 — 05 e 06 CENTRALIZADOS */}
-          <div className="grid gap-y-10 gap-x-10 sm:grid-cols-2 lg:grid-cols-2 md:justify-center lg:max-w-4xl mx-auto md:px-45 md:py-0 py-5">
+          {/* LINHA 2 */}
+          <motion.div
+            className="grid gap-y-10 gap-x-10 sm:grid-cols-2 lg:grid-cols-2 md:justify-center lg:max-w-4xl mx-auto md:px-45 md:py-0 py-5"
+            variants={container}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.25 }}
+          >
             {STEPS.slice(4).map((s) => (
-              <article key={s.n} className="relative">
-                {/* seta do 05 (se tiver) */}
+              <motion.article key={s.n} className="relative" variants={item}>
                 <ArrowAfter type={s.arrow} />
 
                 <div className="text-(--primary-color) text-4xl font-extrabold">
@@ -131,9 +176,9 @@ export default function ProcessoSection() {
                 <p className="mt-3 text-xs leading-relaxed text-white/70 max-w-65 whitespace-pre-line">
                   {s.desc}
                 </p>
-              </article>
+              </motion.article>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>
