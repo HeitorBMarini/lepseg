@@ -59,7 +59,7 @@ function ArrowAfter({ type }: { type?: "down" | "up" }) {
   return (
     <span
       className={`
-        pointer-events-none absolute right-20 hidden lg:block
+        pointer-events-none absolute -right-5 hidden lg:block
         ${type === "down" ? "top-6" : "-top-2"}
       `}
     >
@@ -87,7 +87,7 @@ const item: Variants = {
     y: 0,
     transition: {
       duration: 0.45,
-      ease: [0.16, 1, 0.3, 1], // ✅ compatível com TS
+      ease: [0.16, 1, 0.3, 1], 
     },
   },
 };
@@ -104,7 +104,7 @@ export default function ProcessoSection() {
           viewport={{ once: true, amount: 0.25 }}
           transition={{
             duration: 0.55,
-            ease: [0.16, 1, 0.3, 1], // ✅
+            ease: [0.16, 1, 0.3, 1], 
           }}
         >
           <span
