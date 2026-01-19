@@ -22,13 +22,13 @@ export const contactInfo = {
     title: "E-mails",
     items: [
       {
-        label: "Lindonorribeiro@lepseg.com",
-        href: "mailto:Lindonorribeiro@lepseg.com",
+        label: "lindonorribeiro@lepseg.com",
+        href: "mailto:lindonorribeiro@lepseg.com",
         icon: Mail,
       },
       {
-        label: "Pedroribeiro@lepseg.com",
-        href: "mailto:Pedroribeiro@lepseg.com",
+        label: "pedroribeiro@lepseg.com",
+        href: "mailto:pedroribeiro@lepseg.com",
         icon: Mail,
       },
       {

@@ -45,7 +45,7 @@ export default function YoutubeSection() {
               muted
               preload="metadata"
             >
-              <source src="/videos/video-custom.mp4" type="video/mp4" />
+              <source src="/videos/video-new.mp4" type="video/mp4" />
               Seu navegador não suporta vídeo.
             </video>
           </div>
