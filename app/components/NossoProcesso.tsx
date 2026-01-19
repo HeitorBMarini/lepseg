@@ -94,7 +94,7 @@ const item: Variants = {
 
 export default function ProcessoSection() {
   return (
-    <div className="text-white md:py-5 py-0">
+    <div className="text-white md:pb-12">
       <div className="max-w-6xl mx-auto px-6">
         {/* TOPO */}
         <motion.div
@@ -157,7 +157,7 @@ export default function ProcessoSection() {
 
           {/* LINHA 2 */}
           <motion.div
-            className="grid gap-y-10 gap-x-10 sm:grid-cols-2 lg:grid-cols-2 md:justify-center lg:max-w-4xl mx-auto md:px-45 md:py-0 py-5"
+            className="grid gap-y-10 gap-x-10 sm:grid-cols-2 lg:grid-cols-2 md:justify-center lg:max-w-4xl mx-auto md:px-45 md:py-0 py-0"
             variants={container}
             initial="hidden"
             whileInView="show"

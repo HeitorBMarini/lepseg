@@ -40,7 +40,7 @@ export default function YoutubeSection() {
           <div className="relative aspect-15/16 rounded-2xl overflow-hidden bg-black/40">
             <video
               className="w-full h-full"
-              src="/videos/video-2.mp4"
+              src="/videos/video-custom.mp4"
               controls
               preload="metadata"
             />{" "}
