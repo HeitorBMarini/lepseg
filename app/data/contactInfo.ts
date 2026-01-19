@@ -49,7 +49,7 @@ export const contactInfo = {
       },
       {
         label: "Instagram",
-        href: "https://www.instagram.com/lepseg_assessoria/",
+        href: "https://www.instagram.com/lepseg_assesoria/",
         icon: Instagram,
       },
       {

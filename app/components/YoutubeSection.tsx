@@ -39,12 +39,15 @@ export default function YoutubeSection() {
           {/* COLUNA DIREITA (vídeo principal) */}
           <div className="relative aspect-15/16 rounded-2xl overflow-hidden bg-black/40">
             <video
-              className="w-full h-full"
-              src="/videos/video-custom.mp4"
+              className="w-full h-full object-cover"
               controls
+              playsInline
+              muted
               preload="metadata"
-            />{" "}
-            
+            >
+              <source src="/videos/video-custom.mp4" type="video/mp4" />
+              Seu navegador não suporta vídeo.
+            </video>
           </div>
         </div>
 
