@@ -78,7 +78,7 @@ export default function TreinamentosMarquee() {
   ];
 
   return (
-    <section className="bg-[#282828] text-(--primary-color) py-20">
+    <section className="bg-[#282828] text-(--primary-color) py-10">
       <div className=" mx-auto px-6">
         <div className="flex items-center justify-center">
           <span className="flex items-center justify-center rounded-2xl bg-[#484848]  px-4 py-2 text-[14px] e tracking-[0.24em] text-(--primary-color)">

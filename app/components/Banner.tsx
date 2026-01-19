@@ -38,12 +38,12 @@ export default function HeroBanner() {
           absolute
           top-[45%] sm:top-[60%] md:top-[44%]
           left-40 md:left-195
-          right-auto md:right-[10%]
+          right-auto md:right-[4%]
           -translate-x-1/2 md:translate-x-0
           -translate-y-1/2
           md:text-left
           text-white
-          max-w-[110%] sm:max-w-[80%] md:max-w-185
+          max-w-[110%] sm:max-w-[80%] 
           z-20
         "
         initial={{ opacity: 0, y: 22 }}
@@ -51,7 +51,7 @@ export default function HeroBanner() {
         transition={{ duration: 0.7, ease }}
       >
         <motion.h2
-          className="text-3xl sm:text-3xl md:text-3xl font-extrabold leading-tight"
+          className="text-3xl sm:text-3xl md:text-[2.65rem] font-extrabold"
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease, delay: 0.1 }}
@@ -60,7 +60,7 @@ export default function HeroBanner() {
         </motion.h2>
 
         <motion.p
-          className="mt-4 text-base sm:text-lg md:text-1xl leading-relaxed text-white/90"
+          className="mt-4 text-base sm:text-lg md:text-xl leading-relaxed text-white/90"
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease, delay: 0.22 }}

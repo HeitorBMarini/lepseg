@@ -34,6 +34,7 @@ export default function CTASection() {
 
         {/* BOTÕES */}
         <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+          {/* TELEFONE */}
           <a
             href={contactInfo.phoneGroup.items[0].href}
             className="inline-flex items-center gap-2 px-6 py-3 rounded-md border border-white/70 text-sm font-semibold hover:bg-(--primary-color) hover:text-black transition"
@@ -42,11 +43,14 @@ export default function CTASection() {
             Solicite um orçamento gratuito
           </a>
 
+          {/* WHATSAPP */}
           <a
-            href={contactInfo.phoneGroup.items[0].href}
+            href={contactInfo.phoneGroup.items[1].href}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-[#FDB414] text-white text-sm font-semibold hover:brightness-110 transition"
           >
-            <FaWhatsapp size={16}  />
+            <FaWhatsapp size={16} />
             Fale no WhatsApp
           </a>
         </div>
@@ -95,9 +99,7 @@ export default function CTASection() {
             12h
           </p>
           <p className="mt-1">{contactInfo.location.text}</p>
-          <p className="mt-1 flex justify-center items-center gap-2">
-            
-          </p>
+          <p className="mt-1 flex justify-center items-center gap-2"></p>
         </div>
       </div>
     </section>

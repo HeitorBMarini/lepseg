@@ -104,7 +104,7 @@ export default function EscolherNew() {
   const bottom = ITEMS.slice(4);
 
   return (
-    <section className="relative text-white py-20 overflow-hidden">
+    <section className="relative text-white py-10 overflow-hidden">
       <div className="relative max-w-6xl mx-auto px-6">
         {/* TOPO */}
         <motion.div

@@ -5,7 +5,7 @@ import { contactInfo } from "../data/contactInfo";
 
 export default function YoutubeSection() {
   const youtube = contactInfo.socialGroup.items.find(
-    (item) => item.label === "YouTube"
+    (item) => item.label === "YouTube",
   );
 
   return (
@@ -37,17 +37,14 @@ export default function YoutubeSection() {
           </div>
 
           {/* COLUNA DIREITA (vídeo principal) */}
-          <div className="relative rounded-3xl overflow-hidden shadow-xl bg-black/40">
+          <div className="relative aspect-15/16 rounded-2xl overflow-hidden bg-black/40">
             <video
-              className="w-full aspect-video object-cover h-100 md:h-112.5"
+              className="w-full h-full"
+              src="/videos/video-2.mp4"
               controls
-              muted
-              loop
-              playsInline
               preload="metadata"
-            >
-              <source src="/videos/video-2.mp4" type="video/mp4" />
-            </video>
+            />{" "}
+            
           </div>
         </div>
 

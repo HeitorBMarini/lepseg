@@ -94,7 +94,6 @@ export default function Footer() {
                 </p>
               </div>
 
-              {/* Telefone */}
               {/* Telefones (Telefone + WhatsApp) */}
               {contactInfo.phoneGroup.items.map((item, index) => {
                 const Icon = item.icon;

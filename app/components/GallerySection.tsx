@@ -15,14 +15,13 @@ type GalleryItem = {
 
 export default function GallerySection() {
   const items: GalleryItem[] = useMemo(
-    () => [
-      { id: "1", title: "Nome do Projeto", src: "/imgs/galeria/galeria-1.webp" },
-      { id: "2", title: "Nome do Projeto", src: "/imgs/galeria/galeria-2.webp" },
-      { id: "3", title: "Nome do Projeto", src: "/imgs/galeria/galeria-3.webp" },
-      { id: "4", title: "Nome do Projeto", src: "/imgs/galeria/galeria-4.webp" },
-      { id: "5", title: "Nome do Projeto", src: "/imgs/galeria/galeria-5.webp" },
-    ],
-    []
+    () =>
+      Array.from({ length: 8 }, (_, i) => ({
+        id: String(i + 1),
+        title: "Nome do Projeto",
+        src: `/imgs/galeria/galeria-${i + 1}.webp`,
+      })),
+    [],
   );
 
   const big = items[0];
@@ -40,7 +39,7 @@ export default function GallerySection() {
   }, []);
 
   return (
-    <section className="relative bg-[#282828] text-white py-16 md:py-22 overflow-hidden">
+    <section className="relative bg-[#282828] text-white py-16 md:py-8 overflow-hidden">
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid gap-10 lg:grid-cols-[300px_1fr] items-start">
           {/* COLUNA ESQUERDA */}
@@ -64,13 +63,13 @@ export default function GallerySection() {
               href="/galeria"
               className="
                 mt-6 inline-flex items-center justify-center
-                rounded-sm px-5 py-2.5
+                rounded-sm px-5 py-2.5 uppercase
                 bg-(--primary-color) text-white
-                text-[11px] uppercase tracking-[0.22em]
+                text-[9px]  tracking-[0.22em]
                 hover:brightness-110 transition
               "
             >
-              VEJA TODAS AS OBRAS
+              VEJA TODAS os nossos treinamentos
             </Link>
           </div>
 
@@ -105,7 +104,7 @@ export default function GallerySection() {
               )}
 
               {/* GRID DE THUMBS */}
-              <div className="grid gap-5 grid-cols-2 md:grid-cols-3 auto-rows-[165px] md:auto-rows-[170px] h-100">
+              <div className="grid gap-2 grid-cols-2 md:grid-cols-3 auto-rows-[165px] md:auto-rows-[170px] h-100">
                 {thumbs.map((it, idx) => (
                   <a
                     key={it.id}
@@ -113,17 +112,17 @@ export default function GallerySection() {
                     data-fancybox="galeria"
                     data-caption={it.title}
                     className={`
-                      group relative overflow-hidden rounded-2xl bg-white/5
-                      ${idx === 0 ? "md:row-span-2 md:col-span-1" : ""}
-                      ${idx === 1 ? "md:row-span-2 md:col-span-1" : ""}
-                    `}
+        group relative overflow-hidden rounded-2xl bg-white/5
+        ${idx === 0 ? "md:row-span-2 md:col-span-1" : ""}
+        ${idx === 1 ? "md:row-span-2 md:col-span-1" : ""}
+      `}
                     title={it.title}
                   >
                     <Image
                       src={it.src}
                       alt={it.title}
                       fill
-                      className="object-cover transition duration-300 group-hover:scale-[1.03]"
+                      className="object-cover transition h-screen duration-300 group-hover:scale-[1.03]"
                       sizes="(max-width: 1024px) 50vw, 25vw"
                     />
 

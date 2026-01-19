@@ -142,13 +142,13 @@ export default function ProcessoSection() {
               <motion.article key={s.n} className="relative" variants={item}>
                 <ArrowAfter type={s.arrow} />
 
-                <div className="text-(--primary-color) text-4xl font-extrabold">
+                <div className="text-(--primary-color) text-4xl font-extrabold text-md-start text-center ">
                   {s.n}
                 </div>
 
-                <h3 className="mt-3 text-sm font-semibold">{s.title}</h3>
+                <h3 className="mt-3 text-sm font-semibold text-md-start text-center">{s.title}</h3>
 
-                <p className="mt-3 text-xs leading-relaxed text-white/70 max-w-65 whitespace-pre-line">
+                <p className="mt-3 text-xs leading-relaxed text-white/70 md:max-w-65 whitespace-pre-line text-md-start text-center">
                   {s.desc}
                 </p>
               </motion.article>
@@ -167,13 +167,13 @@ export default function ProcessoSection() {
               <motion.article key={s.n} className="relative" variants={item}>
                 <ArrowAfter type={s.arrow} />
 
-                <div className="text-(--primary-color) text-4xl font-extrabold">
+                <div className="text-(--primary-color) text-4xl font-extrabold text-md-start text-center">
                   {s.n}
                 </div>
 
-                <h3 className="mt-3 text-sm font-semibold">{s.title}</h3>
+                <h3 className="mt-3 text-sm font-semibold text-md-start text-center">{s.title}</h3>
 
-                <p className="mt-3 text-xs leading-relaxed text-white/70 max-w-65 whitespace-pre-line">
+                <p className="mt-3 text-xs leading-relaxed text-white/70 md:max-w-65 whitespace-pre-line text-md-start text-center">
                   {s.desc}
                 </p>
               </motion.article>

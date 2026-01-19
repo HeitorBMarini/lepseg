@@ -14,7 +14,7 @@ export default function AboutHome() {
         bg-[#202020] text-white
         px-4 md:px-0
         pt-16 md:pt-55 pb-16
-        md:-mt-10 md:-top-33
+        md:-mt-10 md:-top-13
       "
     >
       {/* Fundo com o predio (about.svg) */}

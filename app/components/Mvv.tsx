@@ -47,7 +47,7 @@ export default function MVVSection() {
   const current = tabs.find((t) => t.key === active)!;
 
   return (
-    <div className="relative overflow-hidden text-white -top-40">
+    <section className="relative overflow-hidden text-white -top-20">
       {/* BG caminhão */}
       <div className="absolute inset-0 -z-10">
         <Image
@@ -55,11 +55,11 @@ export default function MVVSection() {
           alt="Caminhão"
           fill
           priority
-          className="object-contain object-top -top-10"
+          className="object-contain object-top -top-10 hidden md:block"
         />
       </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6 md:pt-16 pt-47 pb-8">
+      <div className="relative z-10 max-w-6xl mx-auto px-6 md:pt-16 pt-16 ">
         {/* TOPO */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -159,6 +159,6 @@ export default function MVVSection() {
           </div>
         </motion.div>
       </div>
-    </div>
+    </section>
   );
 }

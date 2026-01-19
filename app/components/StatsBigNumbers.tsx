@@ -36,7 +36,7 @@ export default function StatsBigNumbers() {
       className="
         relative z-20
          md:-mt-20
-        md:mb-10
+        md:mb-10 
       "
     >
       <div className="mx-auto max-w-5xl md:px-4">
